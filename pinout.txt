@@ -1,2 +1,5 @@
 PD12	led
-PA8	beep
+PA13	beep
+PA0	button (IT when press led and beep will be do)
+PA10	USART1_RX
+PA9	USART1_TX
