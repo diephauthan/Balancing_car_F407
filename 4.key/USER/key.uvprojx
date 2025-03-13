@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>beep</TargetName>
+      <TargetName>key</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pArmCC>5060061::V5.06 update 1 (build 61)::ARMCC</pArmCC>
@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\Beep</IncludePath>
+              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\Beep;..\BSP\Key</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -578,9 +578,19 @@
               <FilePath>..\BSP\bsp.c</FilePath>
             </File>
             <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\LED\led.c</FilePath>
+            </File>
+            <File>
               <FileName>beep.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\Beep\beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\Key\key.c</FilePath>
             </File>
           </Files>
         </Group>
