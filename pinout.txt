@@ -1,0 +1,2 @@
+PD12	led
+PA8	beep
