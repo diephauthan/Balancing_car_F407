@@ -56,11 +56,11 @@ void Debug_Config(uint8_t mode)
 void bsp_init(void)
 {
     DIY_NVIC_PriorityGroupConfig(2);    // Configure interrupt priority grouping
-    SysTick_Init(168);                  // Initialize delay function
+    SysTick_Init(42);                  // Initialize delay function
     Debug_Config(SWD_ENABLE);           // Enable SWD for debugging
 	
 		Init_Led_GPIO();
-		uart_init(115200);
+		uart_init(9600);
 }
 
 /**************************************************************************

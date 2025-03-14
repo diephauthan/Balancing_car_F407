@@ -8,6 +8,10 @@ void USART1_Send_U8(uint8_t ch);
 void USART1_Send_ArrayU8(uint8_t *BufferPtr, uint16_t Length);
 void USARTSend(char *pucBuffer);
 
+
+void UART4_SendByte(char data);
+void USART_SendStringhaha(const char *str);
+
 #endif
 
 
