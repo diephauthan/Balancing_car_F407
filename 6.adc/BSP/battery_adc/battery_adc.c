@@ -13,7 +13,7 @@ void Battery_init(void)
 	// 168M/6=28, ADC maximum input clock cannot exceed 14M
 	// PA5 is used as analog channel input pin
 	GPIO_InitStructure.GPIO_Pin = BAT_GPIO_PIN;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN; //ain
 	
 	GPIO_Init(BAT_GPIO_PORT, &GPIO_InitStructure);
 	
@@ -72,7 +72,7 @@ uint16_t Battery_Get_Average(uint8_t ch, uint8_t times)
 
 
 //Obtain the measured original voltage value
-int Get_Measure_Volotage(void)
+float Get_Measure_Voltage(void)
 {
 	uint16_t adcx;
 	float temp;
@@ -82,9 +82,9 @@ int Get_Measure_Volotage(void)
 }
 
 //Obtain the actual voltage of the battery before voltage division
-float Get_Battery_Volotage(void)
+float Get_Battery_Voltage(void)
 {
-	float temp = Get_Measure_Volotage();
+	float temp = Get_Measure_Voltage();
 	//The actual measured value is slightly lower than the calculated value.
 	temp = temp * 4.03f; //temp*(10+3.3)/3.3; 
 	return temp;

@@ -13,7 +13,7 @@ void TimingDelay_Decrement(void)
 }
 
 
-char data1[] ="asddas"; 
+char data1[] ="HELLO CIRCLE\r\n";
 
 int main(void)
 {	
@@ -21,9 +21,12 @@ int main(void)
 		
 		while(1)
 		{
-				USART_SendStringhaha(data1);
+				//USART1_Send_U8((u8)*data1);
+				USART1_Send_ArrayU8((u8*)data1, strlen(data1));
 				LED = !LED;
 				delay_ms(500);
+
 		}
 }
+
 

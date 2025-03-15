@@ -372,7 +372,7 @@
             <vShortWch>0</vShortWch>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER</Define>
+              <Define>USE_STDPERIPH_DRIVER,STM32F40_41xxx,HSE_VALUE=8000000</Define>
               <Undefine></Undefine>
               <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\Usart1;..\BSP\battery_adc</IncludePath>
             </VariousControls>

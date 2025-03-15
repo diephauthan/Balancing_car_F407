@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////
 // Configure USART1, enable printf support without selecting use MicroLIB
 // Add the following code to support the printf function without selecting use MicroLIB
-#if 0
+#if 1
 #pragma import(__use_no_semihosting)
 
 // Support functions required by the standard library
@@ -107,9 +107,13 @@ void uart_init(uint32_t bound)
 {
 		GPIO_InitTypeDef GPIO_InitStructure;
 		USART_InitTypeDef USART_InitStructure;
+		NVIC_InitTypeDef NVIC_InitStructure; 
 	
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+	
+		GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);  // Cho TX
+    GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_USART3);  // Cho RX
     
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 		GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -125,9 +129,6 @@ void uart_init(uint32_t bound)
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
     
-    GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);  // Cho TX
-    GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_USART3);  // Cho RX
-    
     // UART initialization settings
     USART_InitStructure.USART_BaudRate = bound;
     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -138,6 +139,13 @@ void uart_init(uint32_t bound)
     
     USART_Init(USART2, &USART_InitStructure);
     USART_Cmd(USART2, ENABLE);
+		
+		// NVIC configuration for USART1 interrupt
+		NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
+		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+		NVIC_Init(&NVIC_InitStructure);
 }
 
 void USART_SendStringhaha(const char *str) {
@@ -148,16 +156,6 @@ void USART_SendStringhaha(const char *str) {
 }
 
 
-// Hàm g?i d? li?u qua UART4
-void UART4_SendByte(char data)
-{
-    // Ð?i cho d?n khi buffer truy?n s?n sàng
-    while(USART_GetFlagStatus(UART4, USART_FLAG_TXE) == RESET);
-    
-    // G?i d? li?u
-    USART_SendData(UART4, data);
-}
-
 
 /**
  * @Brief: UART1 sends a byte of data
@@ -167,9 +165,9 @@ void UART4_SendByte(char data)
  */
 void USART1_Send_U8(u8 data)
 {
-	while(USART_GetFlagStatus(UART4,USART_FLAG_TXE) == RESET);
+	while(USART_GetFlagStatus(USART2,USART_FLAG_TXE) == RESET);
 	
-	USART_SendData(UART4, data);
+	USART_SendData(USART2, data);
 }
 
 /**
@@ -179,77 +177,28 @@ void USART1_Send_U8(u8 data)
  * @Parm: Length - Length of the data buffer
  * @Retval: none
  */
-void USART1_Send_ArrayU8(u8 *bufferptr, u16 Length)
+void USART1_Send_ArrayU8(uint8_t *BufferPtr, uint16_t Length)
 {
-	while(Length--)
+	while (Length--)
 	{
-		USART1_Send_U8(*bufferptr);
-		bufferptr++;
+		USART1_Send_U8(*BufferPtr); // Send each byte
+		BufferPtr++; // Move to the next byte
 	}
 }
 
 // Serial port interrupt service function
-//void USART1_IRQHandler(void)
-//{
-//	uint8_t Rx1_Temp = 0;
-//	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) // Check if the interrupt is triggered
-//	{
-//		Rx1_Temp = USART_ReceiveData(USART1); // Read received data
-//		USART1_Send_U8(Rx1_Temp); // Echo the received data
-//	}
-//}
-
-void USARTSend(char *pucBuffer)
+void USART1_IRQHandler(void)
 {
-   while (*pucBuffer)
-    {
-        while(USART_GetFlagStatus(UART4, USART_FLAG_TXE) == RESET);
-        USART_SendData(UART4, *pucBuffer++);
-    }
-}
-
-void USARTRead(u16 data)
-{
-		char buffer[10];
-    uint8_t receivedData;
-    
-    // Ki?m tra xem c? d? li?u nh?n du?c kh?ng
-    if (USART_GetFlagStatus(UART4, USART_FLAG_RXNE) != RESET)
-    {
-        receivedData = USART_ReceiveData(UART4);  // ??c d? li?u t? USART1
-        
-        // G?i d? li?u d? nh?n tr? l?i (echo)
-        USART1_Send_U8(receivedData);
-        
-        // N?u b?n mu?n g?i l?i gi? tr? nh?n du?c du?i d?ng chu?i, v? d?: n?u nh?n du?c d? li?u l? 65, g?i "65"
-        sprintf(buffer, "%d\r\n", receivedData);
-        USARTSend(buffer);
-        
-				sprintf(buffer, "%d\r\n", receivedData);
-				USARTSend(buffer);
-    }
-}
-
-
-void UART_SendChar(USART_TypeDef *USARTx, uint16_t data){
-	USARTx->DR = 0x00; //delete data register
-	USART_SendData(USARTx, data);
-	
-	while(USART_GetFlagStatus(USARTx, USART_FLAG_TXE)==RESET);
+	uint8_t Rx1_Temp = 0;
+	if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) // Check if the interrupt is triggered
+	{
+		Rx1_Temp = USART_ReceiveData(USART2); // Read received data
+		USART1_Send_U8(Rx1_Temp); // Echo the received data
+	}
 }
 
 
 
-
-void UART_SendString(USART_TypeDef *USARTx, char *str){
-	while(*str)
-		{
-		UART_SendChar(USARTx, *str);
-		str++;
-		}
-		while(USART_GetFlagStatus(USARTx, USART_FLAG_TXE)==RESET){};
-				delay_us(1000);
-}
 
 
 

@@ -22,8 +22,8 @@ int main(void)
 		{
 				LED = !LED;
 	
-				UART_SendString(USART1, mess);
+				//printf("%.2fV\r\n", Get_Battery_Volotage());
+				USART2_Send_Float(Get_Battery_Voltage(), 4);
 				delay_ms(500);
 		}
 }
-
