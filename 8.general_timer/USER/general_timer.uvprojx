@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>base_time</TargetName>
+      <TargetName>general_timer</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pArmCC>5060061::V5.06 update 1 (build 61)::ARMCC</pArmCC>
@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F40_41xxx,HSE_VALUE=8000000,USE_STM32F4_DISCOVERY</Define>
               <Undefine></Undefine>
-              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\TIMER</IncludePath>
+              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\TIMER;..\BSP\Usart2;..\BSP\Encoder</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -586,6 +586,16 @@
               <FileName>timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\TIMER\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\Usart2\usart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\Encoder\encoder.c</FilePath>
             </File>
           </Files>
         </Group>

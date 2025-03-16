@@ -1,5 +1,5 @@
 Dependencies for Project 'general_timer', Target 'general_timer': (DO NOT MODIFY !)
-F (.\main.c)(0x67D67D86)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Encoder-I D:\Embedded\stm32_f407_balacing_car\8.general_timer\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x67D6A7F5)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Encoder-I D:\Embedded\stm32_f407_balacing_car\8.general_timer\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (main.h)(0x67D67F13)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB3988)
@@ -942,7 +942,7 @@ I (..\FWLib\inc\stm32f4xx_can.h)(0x61F25A2E)
 I (..\FWLib\inc\stm32f4xx_dac.h)(0x61F25A30)
 I (..\FWLib\inc\stm32f4xx_dcmi.h)(0x61F25A31)
 I (..\FWLib\inc\stm32f4xx_fsmc.h)(0x61F25A36)
-F (..\BSP\bsp.c)(0x67D68DF8)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Encoder-I D:\Embedded\stm32_f407_balacing_car\8.general_timer\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\bsp.o --omf_browse ..\obj\bsp.crf --depend ..\obj\bsp.d)
+F (..\BSP\bsp.c)(0x67D6A7F5)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Encoder-I D:\Embedded\stm32_f407_balacing_car\8.general_timer\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\bsp.o --omf_browse ..\obj\bsp.crf --depend ..\obj\bsp.d)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\USER\main.h)(0x67D67F13)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
@@ -1134,7 +1134,7 @@ I (..\BSP\bsp.h)(0x67D299E0)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\TIMER\timer.h)(0x67D45DDA)
 I (..\BSP\Encoder\encoder.h)(0x67D66CD5)
-F (..\BSP\Encoder\encoder.c)(0x67D67AD6)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Encoder-I D:\Embedded\stm32_f407_balacing_car\8.general_timer\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\encoder.o --omf_browse ..\obj\encoder.crf --depend ..\obj\encoder.d)
+F (..\BSP\Encoder\encoder.c)(0x67D6A1F6)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Encoder-I D:\Embedded\stm32_f407_balacing_car\8.general_timer\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\encoder.o --omf_browse ..\obj\encoder.crf --depend ..\obj\encoder.d)
 I (..\BSP\Encoder\encoder.h)(0x67D66CD5)
 I (..\USER\main.h)(0x67D67F13)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)

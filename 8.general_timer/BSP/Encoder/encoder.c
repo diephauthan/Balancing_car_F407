@@ -14,7 +14,9 @@ void Encoder_Init_TIM3(void)
 	
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN; 
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
@@ -43,14 +45,16 @@ void Encoder_Init_TIM4(void)
   GPIO_InitTypeDef GPIO_InitStructure;
 	
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
-  RCC_APB2PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 	
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_TIM4);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_TIM4);
 	
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7;	
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN; // input
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF; // input
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  // Thêm c?u hình t?c d?
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);				
   
   TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
@@ -81,8 +85,14 @@ int Read_Encoder(Motor_ID MYTIMX)
    int Encoder_TIM;    
    switch(MYTIMX)
 	 {
-		 case MOTOR_ID_ML:  Encoder_TIM= (short)TIM3 -> CNT;  TIM3 -> CNT=0;break;	
-		 case MOTOR_ID_MR:  Encoder_TIM= (short)TIM4 -> CNT;  TIM4 -> CNT=0;break;	
+		 case MOTOR_ID_ML:  
+				 Encoder_TIM= (short)TIM3 -> CNT; 
+				 TIM3 -> CNT=0;
+				 break;	
+		 case MOTOR_ID_MR:  
+				 Encoder_TIM= (short)TIM4 -> CNT;  
+				 TIM4 -> CNT=0;
+				 break;	
 		 default: Encoder_TIM=0;
 	 }
 		return Encoder_TIM;
