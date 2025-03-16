@@ -45,8 +45,8 @@ void uart_init(uint32_t bound)
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	
-		GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);  // Cho TX
-    GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_USART3);  // Cho RX
+		GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);  // TX
+    GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_USART3);  // RX
     
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 		GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -132,12 +132,11 @@ void USART2_IRQHandler(void)
 
 void USART2_Send_Float(float value, u16 precision)
 {
-    char buffer[20]; // K?ch thu?c d? cho h?u h?t s? float
+    char buffer[20]; 
     
-    // Chuy?n d?i float th?nh chu?i v?i d? ch?nh x?c c? th?
     sprintf(buffer, "%.*f", precision, value);
     
-    // G?i chu?i qua USART2
+    // Send string over USART2
     USART2_Send_ArrayU8((u8*)buffer, strlen(buffer));
 }
 

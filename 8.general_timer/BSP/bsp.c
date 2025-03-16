@@ -10,9 +10,6 @@ void bsp_init(void)
 	uart_init(9600);
 	Encoder_Init_TIM3();
   Encoder_Init_TIM4();
-	
-	//SysTick_Init(168);
-	//delay_init();	            // Initialize delay function
 }
 
 // void JTAG_Set(u8 mode)

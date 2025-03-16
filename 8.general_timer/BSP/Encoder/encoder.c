@@ -53,7 +53,7 @@ void Encoder_Init_TIM4(void)
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7;	
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF; // input
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  // Thêm c?u hình t?c d?
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);				
   

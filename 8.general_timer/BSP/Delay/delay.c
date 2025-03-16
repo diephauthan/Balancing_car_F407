@@ -2,23 +2,7 @@
 
 uint8_t fac_us = 0;
 uint16_t fac_ms = 0;
-
- //SysTick initialization function for STM32F407
-//void SysTick_Init(uint8_t SYSCLK)
-//{
-//    // SYSCLK is the system frequency in MHz
-//    SysTick->CTRL &= ~(1 << 2);   // Use the HCLK (system clock) as the clock source
-//    fac_us = SYSCLK;              // Set the microsecond factor
-//    fac_ms = (uint16_t)SYSCLK * 1000; // Set the millisecond factor
-//}
-
-//void delay_init(void)
-//{
-//	uint8_t SYSCLK = SystemCoreClock / 1000000;
-//	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8); // HCLK/8  Select external clock HCLK/8
-//	fac_us = SYSCLK / 8;
-//	fac_ms = (uint16_t)fac_us * 1000;
-//}
+extern uint32_t millis(void);
 
 void delay_us(uint32_t nus){
     TIM_SetCounter(TIM7, 0);
@@ -30,11 +14,11 @@ void Delay1Ms(){
     while (TIM_GetCounter(TIM7) <1000){}
 }
 
-void delay_ms(uint16_t nms){
-    for(uint32_t i = 0; i < nms * 10; i++) {  // 101?s ? 10 ? 1ms
-        TIM7->SR &= ~TIM_SR_UIF;  // X?a c? tr?n
-        while(!(TIM7->SR & TIM_SR_UIF)) {}  // Ch? tr?n
-		}
+void delay_ms(uint16_t ms)
+{
+    uint32_t start = millis();
+    while (millis() - start < ms) {
+    }
 }
 
 void SystemClockConfig(void)
