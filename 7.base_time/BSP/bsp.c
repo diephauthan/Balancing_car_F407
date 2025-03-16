@@ -4,13 +4,13 @@ void bsp_init(void)
 {
 	
 	DIY_NVIC_PriorityGroupConfig(2);	  // Set interrupt grouping
+  SystemClockConfig();
 	//SysTick_Init(168);
-	delay_init();	            // Initialize delay function
+	//delay_init();	            // Initialize delay function
 	//JTAG_Set(JTAG_SWD_DISABLE);     // Close JTAG interface
 	//JTAG_Set(SWD_ENABLE);           // Open SWD interface for debugging using the motherboard's SWD interface
 	
 	Init_Led_GPIO();								// Onboard LED
-
 	TIM7_Init();
 }
 
