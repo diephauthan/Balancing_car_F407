@@ -1,16 +1,16 @@
 #include "delay.h"
 
-uint8_t fac_us = 0;
-uint16_t fac_ms = 0;
+static uint8_t fac_us = 0;  //us delay multiplier
+static uint16_t fac_ms = 0; //ms delay multiplier
 
-// SysTick initialization function for STM32F407
-void SysTick_Init(uint8_t SYSCLK)
+void delay_init(void)
 {
-    // SYSCLK is the system frequency in MHz
-    SysTick->CTRL &= ~(1 << 2);   // Use the HCLK (system clock) as the clock source
-    fac_us = SYSCLK;              // Set the microsecond factor
-    fac_ms = (uint16_t)SYSCLK * 1000; // Set the millisecond factor
+	uint8_t SYSCLK = SystemCoreClock / 1000000;
+	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8); // ????????  HCLK/8 Select external clock HCLK/8
+	fac_us = SYSCLK / 8;
+	fac_ms = (uint16_t)fac_us * 1000;
 }
+
 
 /**********************************************************
 ** Function name: delay_ms

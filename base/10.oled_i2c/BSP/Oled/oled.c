@@ -9,51 +9,72 @@
 /* SSD1306 data buffer */
 static uint8_t SSD1306_Buffer[SSD1306_WIDTH * SSD1306_HEIGHT / 8];
 
-typedef struct 
+typedef struct
 {
-    u16 CurrentX;
-    u16 CurrentY;
-    u8  Inverted;
-    u8  Initialized;
-}SSD1306_t;
+    uint16_t CurrentX;
+    uint16_t CurrentY;
+    uint8_t Inverted;
+    uint8_t Initialized;
+} SSD1306_t;
 
 static SSD1306_t SSD1306;
 
-// Delay function
-void IIC_WaitEvent(I2C_TypeDef* I2Cx,u32 I2C_EVENT)
+//延时函数 Delay function
+void IIC_WaitEvent(I2C_TypeDef* I2Cx, uint32_t I2C_EVENT)
 {
-    u32 timeout;
-    timeout = 1000;
-    while(I2C_CheckEvent(I2Cx, I2C_EVENT) != SUCCESS)
-    {
-        timeout --;
-        if(timeout == 0)
-        {
-            break;
-        }
-    }
+	uint32_t Timeout;
+	Timeout = 1000;
+	while (I2C_CheckEvent(I2Cx, I2C_EVENT) != SUCCESS)
+	{
+		Timeout --;
+		if (Timeout == 0)
+		{
+			break;
+		}
+	}
 }
 
-void I2C_WriteByte(u8 RegAddress, u8 Data)
+//向OLED寄存器地址写一个byte的数据 -死等的方案，不要 Write a byte of data to the OLED register address - wait for the solution, don't
+//void I2C_WriteByte(uint8_t addr,uint8_t data)
+//{
+//		while( I2C_GetFlagStatus(OLED_I2C, I2C_FLAG_BUSY) );
+//		I2C_GenerateSTART(OLED_I2C, ENABLE);
+//		
+//		while( !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT) );
+//		I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter);
+//		
+//		while( !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) );
+//		I2C_SendData(OLED_I2C, addr);
+//		
+//		while( !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTING) );
+//		I2C_SendData(OLED_I2C, data);
+//		
+//		while( !I2C_CheckEvent(OLED_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+//		I2C_GenerateSTOP(OLED_I2C, ENABLE);
+//}
+
+void I2C_WriteByte(uint8_t RegAddress, uint8_t Data)
 {
-    I2C_GenerateSTART(OLED_I2C, ENABLE);
-    IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT);
-
-    I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter);
-    IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED);
-
-    I2C_SendData(OLED_I2C, RegAddress);
-    IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTING);
-
-    I2C_SendData(OLED_I2C, Data);
-    IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTED);
-
-    I2C_GenerateSTOP(OLED_I2C, ENABLE);
+	I2C_GenerateSTART(OLED_I2C, ENABLE);
+	IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_MODE_SELECT);
+	
+	I2C_Send7bitAddress(OLED_I2C, OLED_ADDRESS, I2C_Direction_Transmitter);
+	IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED);
+	
+	I2C_SendData(OLED_I2C, RegAddress);
+	IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTING);
+	
+	I2C_SendData(OLED_I2C, Data);
+	IIC_WaitEvent(OLED_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTED);
+	
+	I2C_GenerateSTOP(OLED_I2C, ENABLE);
 }
+
 
 void OLED_Init(void)
 {
-    //delay_ccms(100);
+
+    delay_ms(100);
 
     SSD1306_WRITECOMMAND(0xae); // display off
     SSD1306_WRITECOMMAND(0xa6); // Set Normal Display (default)
@@ -100,18 +121,19 @@ void OLED_Init(void)
 
 void SSD1306_UpdateScreen(void)
 {
-    u8 m, n;
-     for(m = 0; m < 8; m++)
-     {
+    uint8_t m, n;
+
+    for (m = 0; m < 8; m++)
+    {
         SSD1306_WRITECOMMAND(0xB0 + m);
         SSD1306_WRITECOMMAND(0x00);
         SSD1306_WRITECOMMAND(0x10);
 
-        for(n = 0; n < SSD1306_WIDTH; n++)
+        for (n = 0; n < SSD1306_WIDTH; n++)
         {
             SSD1306_WRITEDATA(SSD1306_Buffer[n + SSD1306_WIDTH * m]);
         }
-     }
+    }
 }
 
 void SSD1306_Fill(SSD1306_COLOR_t color)
@@ -120,23 +142,33 @@ void SSD1306_Fill(SSD1306_COLOR_t color)
     memset(SSD1306_Buffer, (color == SSD1306_COLOR_BLACK) ? 0x00 : 0xFF, sizeof(SSD1306_Buffer));
 }
 
-void SSD1306_DrawPixel(u16 x, u16 y, SSD1306_COLOR_t color)
+void SSD1306_DrawPixel(uint16_t x, uint16_t y, SSD1306_COLOR_t color)
 {
-    if(x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT)
+    if (x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT)
     {
-        return; //error, out of range
+        return; // 出错，超出范围 Error, out of range
     }
 
-    // Check if pixel is inverted
-    if(SSD1306.Inverted)
+    /* 检查像素是否倒置
+     * Check if pixel is inverted
+     * */
+
+    if (SSD1306.Inverted)
     {
         color = (SSD1306_COLOR_t)!color;
     }
 
-    if(color == SSD1306_COLOR_WHITE)
+    /* 设置颜色
+     *
+     * Set color
+     *  */
+
+    if (color == SSD1306_COLOR_WHITE)
     {
         SSD1306_Buffer[x + (y / 8) * SSD1306_WIDTH] |= 1 << (y % 8);
-    }else{
+    }
+    else
+    {
         SSD1306_Buffer[x + (y / 8) * SSD1306_WIDTH] &= ~(1 << (y % 8));
     }
 }
@@ -149,15 +181,16 @@ void SSD1306_GotoXY(uint16_t x, uint16_t y)
 
 char SSD1306_Putc(char ch, FontDef_t *Font, SSD1306_COLOR_t color)
 {
-    u32 i, b, j;
+    uint32_t i, b, j;
 
-    if( SSD1306_WIDTH <= (SSD1306.CurrentX + Font->FontWidth) || 
-        SSD1306_HEIGHT <= (SSD1306.CurrentY + Font->FontHeight) )
+    if (
+        SSD1306_WIDTH <= (SSD1306.CurrentX + Font->FontWidth) ||
+        SSD1306_HEIGHT <= (SSD1306.CurrentY + Font->FontHeight))
     {
-        return 0; //Error, out of range
+        return 0; // 出错，超出范围 Error, out of range
     }
 
-    for(i = 0; i < Font->FontHeight; i++)
+    for (i = 0; i < Font->FontHeight; i++)
     {
         b = Font->data[(ch - 32) * Font->FontHeight + i];
         for (j = 0; j < Font->FontWidth; j++)
@@ -170,7 +203,7 @@ char SSD1306_Putc(char ch, FontDef_t *Font, SSD1306_COLOR_t color)
             {
                 SSD1306_DrawPixel(SSD1306.CurrentX + j, (SSD1306.CurrentY + i), (SSD1306_COLOR_t)!color);
             }
-        }  
+        }
     }
 
     /* Increase pointer */
@@ -200,7 +233,7 @@ char SSD1306_Puts(char *str, FontDef_t *Font, SSD1306_COLOR_t color)
     return *str;
 }
 
-// Wake OLED from sleep
+// 将OLED从休眠中唤醒 Wake OLED from sleep
 void OLED_ON(void)
 {
     SSD1306_WRITECOMMAND(0x8D);
@@ -208,7 +241,7 @@ void OLED_ON(void)
     SSD1306_WRITECOMMAND(0xAF);
 }
 
-// Let OLED sleep -- In sleep mode, OLED power consumption is less than 10uA
+// 让OLED休眠 -- 休眠模式下,OLED功耗不到10uA Let OLED sleep -- In sleep mode, OLED power consumption is less than 10uA
 void OLED_OFF(void)
 {
     SSD1306_WRITECOMMAND(0x8D);
@@ -317,34 +350,46 @@ void SSD1306_DrawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, SSD130
     }
 }
 
-//OLED clear screen
+/* OLED清除屏幕
+ *
+ * OLED clear screen
+ *  */
+
 void OLED_Clear(void)
 {
     SSD1306_Fill(SSD1306_COLOR_BLACK);
 }
 
-//refresh oled screen
+/* 刷新OLED屏幕
+ *
+ * Refresh OLED screen
+ * */
+
 void OLED_Refresh(void)
 {
     SSD1306_UpdateScreen();
 }
 
-//write characters
-void OLED_Draw_String(char *data, u8 x, u8 y, bool clear, bool refresh)
+/* 写入字符
+ *
+ * Write characters
+ *  */
+
+void OLED_Draw_String(char *data, uint8_t x, uint8_t y, bool clear, bool refresh)
 {
-        if (clear)
-        {
-            OLED_Clear();
-            SSD1306_GotoXY(x, y);
-            SSD1306_Puts(data, &Font_7x10, SSD1306_COLOR_WHITE);
-        }
-        if (refresh)
-        {
-            OLED_Refresh();
-        }
+    if (clear)
+        OLED_Clear();
+    SSD1306_GotoXY(x, y);
+    SSD1306_Puts(data, &Font_7x10, SSD1306_COLOR_WHITE);
+    if (refresh)
+        OLED_Refresh();
 }
 
-// Write a line of characters
+/* 写入一行字符
+ *
+ * Write a line of characters
+ *  */
+
 void OLED_Draw_Line(char *data, uint8_t line, bool clear, bool refresh)
 {
     if (line > 0 && line <= 3)
@@ -352,4 +397,3 @@ void OLED_Draw_Line(char *data, uint8_t line, bool clear, bool refresh)
         OLED_Draw_String(data, 0, 10 * (line - 1), clear, refresh);
     }
 }
-

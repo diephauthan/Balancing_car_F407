@@ -14,6 +14,7 @@ void TimingDelay_Decrement(void)
 int main(void)
 {	
 	bsp_init(); // System initialization
+    delay_ms(600);
     OLED_Clear();
 	char str[] = "";
     
@@ -21,19 +22,20 @@ int main(void)
 	{
         static float process = 0;
 		int x,y;
+        OLED_Clear();
         for(x = 0; x < 128; x++){
             for(y = 10; y < 20; y++){
                 SSD1306_DrawPixel(x, y, SSD1306_COLOR_WHITE);
             }
-
             process = x*100/127;
-            sprintf(str, "process: %.2f",process);
+            sprintf(str, "process: %.2f%%", process);
             OLED_Draw_Line(str, 1, false, true);
-            OLED_Draw_Line(str, 1, false, false);
+            //LED_Draw_Line(str, 1, true, true);
         }
 
         OLED_Draw_Line("finish",2,true,true);
-        break;
+        delay_ms(500);
 	}
 }
+
 

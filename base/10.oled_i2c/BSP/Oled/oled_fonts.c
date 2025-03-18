@@ -1,7 +1,7 @@
 /********************************
 *                               *
 *                               *
-* 	oled��Ļ����ʾ���ֿ�(Ӣ��)  Fonts displayed on oled screen (English) *
+*Fonts displayed on oled screen (English) *
 *                               *
 *                               *
 ********************************/

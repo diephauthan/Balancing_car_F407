@@ -30,7 +30,6 @@
 
 #include "delay.h"
 #include "bsp.h"
-#include "timer.h"
 #include "oled.h"
 #include "led.h"
 #include "oled_fonts.h"

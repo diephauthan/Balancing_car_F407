@@ -90,9 +90,9 @@ int main(void)
 		while(1)
 		{
 			GPIO_SetBits(LED_PORT, LED_PIN); // Turn ON the LED
-			delay_ccms(1000); // Delay for 500ms to keep the LED on
+			delay_ms(600); // Delay for 500ms to keep the LED on
 			GPIO_ResetBits(LED_PORT, LED_PIN); // Turn OFF the LED
-			delay_ccms(2000); // Delay for 500ms to keep the LED off
+			delay_ms(600); // Delay for 500ms to keep the LED off
 			
 		}
 }

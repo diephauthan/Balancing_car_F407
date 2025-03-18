@@ -44,8 +44,6 @@
 ..\obj\bsp.o: ..\USER\myenum.h
 ..\obj\bsp.o: ..\BSP\Delay\delay.h
 ..\obj\bsp.o: ..\BSP\bsp.h
-..\obj\bsp.o: ..\BSP\TIMER\timer.h
-..\obj\bsp.o: ..\USER\main.h
 ..\obj\bsp.o: ..\BSP\Oled\oled.h
 ..\obj\bsp.o: ..\BSP\Oled\oled_i2c.h
 ..\obj\bsp.o: ..\USER\main.h

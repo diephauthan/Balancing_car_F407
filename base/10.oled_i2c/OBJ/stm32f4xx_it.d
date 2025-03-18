@@ -45,8 +45,6 @@
 ..\obj\stm32f4xx_it.o: ..\BSP\Delay\delay.h
 ..\obj\stm32f4xx_it.o: ..\BSP\bsp.h
 ..\obj\stm32f4xx_it.o: ..\USER\main.h
-..\obj\stm32f4xx_it.o: ..\BSP\TIMER\timer.h
-..\obj\stm32f4xx_it.o: ..\USER\main.h
 ..\obj\stm32f4xx_it.o: ..\BSP\Oled\oled.h
 ..\obj\stm32f4xx_it.o: ..\BSP\Oled\oled_i2c.h
 ..\obj\stm32f4xx_it.o: ..\USER\main.h

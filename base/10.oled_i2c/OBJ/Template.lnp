@@ -29,7 +29,6 @@
 "..\obj\delay.o"
 "..\obj\bsp.o"
 "..\obj\led.o"
-"..\obj\timer.o"
 "..\obj\oled.o"
 "..\obj\oled_i2c.o"
 "..\obj\oled_fonts.o"

@@ -46,8 +46,6 @@
 ..\obj\oled.o: ..\BSP\Delay\delay.h
 ..\obj\oled.o: ..\BSP\bsp.h
 ..\obj\oled.o: ..\USER\main.h
-..\obj\oled.o: ..\BSP\TIMER\timer.h
-..\obj\oled.o: ..\USER\main.h
 ..\obj\oled.o: ..\BSP\Oled\oled.h
 ..\obj\oled.o: ..\BSP\LED\led.h
 ..\obj\oled.o: ..\USER\main.h

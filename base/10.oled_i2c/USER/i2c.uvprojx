@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F40_41xxx,HSE_VALUE=8000000,USE_STM32F4_DISCOVERY</Define>
               <Undefine></Undefine>
-              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\TIMER;..\BSP\Oled</IncludePath>
+              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\Oled</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -581,11 +581,6 @@
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\LED\led.c</FilePath>
-            </File>
-            <File>
-              <FileName>timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BSP\TIMER\timer.c</FilePath>
             </File>
             <File>
               <FileName>oled.c</FileName>

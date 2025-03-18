@@ -9,7 +9,6 @@
                 "d:\\Embedded\\stm32_f407_balacing_car\\base\\10.oled_i2c\\USER",
                 "d:\\Embedded\\stm32_f407_balacing_car\\base\\10.oled_i2c\\BSP\\Delay",
                 "d:\\Embedded\\stm32_f407_balacing_car\\base\\10.oled_i2c\\BSP\\LED",
-                "d:\\Embedded\\stm32_f407_balacing_car\\base\\10.oled_i2c\\BSP\\TIMER",
                 "d:\\Embedded\\stm32_f407_balacing_car\\base\\10.oled_i2c\\BSP\\Oled",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include\\rw",

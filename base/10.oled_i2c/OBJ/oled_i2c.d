@@ -45,8 +45,6 @@
 ..\obj\oled_i2c.o: ..\BSP\Delay\delay.h
 ..\obj\oled_i2c.o: ..\BSP\bsp.h
 ..\obj\oled_i2c.o: ..\USER\main.h
-..\obj\oled_i2c.o: ..\BSP\TIMER\timer.h
-..\obj\oled_i2c.o: ..\USER\main.h
 ..\obj\oled_i2c.o: ..\BSP\Oled\oled.h
 ..\obj\oled_i2c.o: ..\BSP\Oled\oled_i2c.h
 ..\obj\oled_i2c.o: ..\USER\main.h
