@@ -71,6 +71,11 @@ int main(void)
 {	
 		SystemClockConfig();
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
+	
+		//Enable HSE clock
+		RCC_HSEConfig(RCC_HSE_ON);
+		//Wait for clock to stabilize
+		while (!RCC_WaitForHSEStartUp());
 		
 		//bsp_init(); // System initialization
 
