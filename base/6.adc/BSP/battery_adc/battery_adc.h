@@ -5,7 +5,7 @@
 
 #define BAT_GPIO_RCC    RCC_AHB1Periph_GPIOA
 #define BAT_GPIO_PORT   GPIOA
-#define BAT_GPIO_PIN    GPIO_Pin_5
+#define BAT_GPIO_PIN    GPIO_Pin_4
 
 
 #define BAT_ADC         ADC1
