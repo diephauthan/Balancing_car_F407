@@ -8,7 +8,6 @@ static void ultrasonic_init(void)
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHB1PeriphClockCmd(ULTRASONIC_RCC, ENABLE);
 
-	//GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM2);
     GPIO_PinAFConfig(GPIOA, GPIO_PinSource1, GPIO_AF_TIM2); 
 	
 	GPIO_InitStructure.GPIO_Pin  = ECHO_PIN; 
@@ -95,7 +94,7 @@ void TIM2_IRQHandler(void)
 		{	    
 			 if(TIM2CH2_CAPTURE_STA&0X40)				// The high level has been captured
 			 {
-				 if((TIM2CH2_CAPTURE_STA&0X3F)==0X3F)	// The high level is too long
+				 if((TIM2CH2_CAPTURE_STA&0X3F)==0X3F)	// The high level is too long, A maximum of 63 overflow occurrences can be tracked (0x3F).
 				 {
 					  TIM2CH2_CAPTURE_STA|=0X80;      	// Marks a successful capture
 						TIM2CH2_CAPTURE_VAL=0XFFFF;
