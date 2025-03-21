@@ -1,5 +1,5 @@
 Dependencies for Project '5.MPU6050', Target 'Mpu6050': (DO NOT MODIFY !)
-F (.\main.c)(0x67DC5280)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Usart2 -I..\BSP\MPU6050 -I..\BSP\IIC_Software -I..\BSP\INT_Sever -I..\BSP\MPU6050\DMP-I d:\Embedded\stm32_f407_balacing_car\expansion\5.MPU6050\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x67DCEDCF)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Usart2 -I..\BSP\MPU6050 -I..\BSP\IIC_Software -I..\BSP\INT_Sever -I..\BSP\MPU6050\DMP-I d:\Embedded\stm32_f407_balacing_car\expansion\5.MPU6050\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (main.h)(0x67DBE7BF)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB3988)
@@ -46,7 +46,7 @@ I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\USER\main.h)(0x67DBE7BF)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
@@ -101,7 +101,7 @@ I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\USER\main.h)(0x67DBE7BF)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
@@ -1033,7 +1033,7 @@ I (..\USER\myenum.h)(0x67DA9C6E)
 I (..\BSP\Delay\delay.h)(0x67D99F72)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
@@ -1086,7 +1086,7 @@ I (..\USER\myenum.h)(0x67DA9C6E)
 I (..\BSP\Delay\delay.h)(0x67D99F72)
 I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
@@ -1139,15 +1139,15 @@ I (..\USER\myenum.h)(0x67DA9C6E)
 I (..\BSP\Delay\delay.h)(0x67D99F72)
 I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
 I (..\BSP\MPU6050\DMP\inv_mpu.h)(0x67DBC987)
 I (..\BSP\MPU6050\DMP\inv_mpu_dmp_motion_driver.h)(0x67DBE390)
 I (..\BSP\INT_Sever\intsever.h)(0x67DC5280)
-F (..\BSP\IIC_Software\IOI2C.c)(0x67DC510B)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Usart2 -I..\BSP\MPU6050 -I..\BSP\IIC_Software -I..\BSP\INT_Sever -I..\BSP\MPU6050\DMP-I d:\Embedded\stm32_f407_balacing_car\expansion\5.MPU6050\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\ioi2c.o --omf_browse ..\obj\ioi2c.crf --depend ..\obj\ioi2c.d)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+F (..\BSP\IIC_Software\IOI2C.c)(0x67DCEA47)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Usart2 -I..\BSP\MPU6050 -I..\BSP\IIC_Software -I..\BSP\INT_Sever -I..\BSP\MPU6050\DMP-I d:\Embedded\stm32_f407_balacing_car\expansion\5.MPU6050\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\ioi2c.o --omf_browse ..\obj\ioi2c.crf --depend ..\obj\ioi2c.d)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\USER\main.h)(0x67DBE7BF)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB3988)
@@ -1246,13 +1246,13 @@ I (..\BSP\Delay\delay.h)(0x67D99F72)
 I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
 I (..\BSP\MPU6050\DMP\inv_mpu.h)(0x67DBC987)
 I (..\BSP\MPU6050\DMP\inv_mpu_dmp_motion_driver.h)(0x67DBE390)
-F (..\BSP\MPU6050\mpu6050.c)(0x67DC5090)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Usart2 -I..\BSP\MPU6050 -I..\BSP\IIC_Software -I..\BSP\INT_Sever -I..\BSP\MPU6050\DMP-I d:\Embedded\stm32_f407_balacing_car\expansion\5.MPU6050\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\mpu6050.o --omf_browse ..\obj\mpu6050.crf --depend ..\obj\mpu6050.d)
+F (..\BSP\MPU6050\mpu6050.c)(0x67DC62CF)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Usart2 -I..\BSP\MPU6050 -I..\BSP\IIC_Software -I..\BSP\INT_Sever -I..\BSP\MPU6050\DMP-I d:\Embedded\stm32_f407_balacing_car\expansion\5.MPU6050\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\mpu6050.o --omf_browse ..\obj\mpu6050.crf --depend ..\obj\mpu6050.d)
 I (..\BSP\MPU6050\mpu6050.h)(0x67DC352C)
 I (..\USER\main.h)(0x67DBE7BF)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
@@ -1299,7 +1299,7 @@ I (..\BSP\Delay\delay.h)(0x67D99F72)
 I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
 I (..\BSP\MPU6050\DMP\inv_mpu.h)(0x67DBC987)
@@ -1351,7 +1351,7 @@ I (..\BSP\Delay\delay.h)(0x67D99F72)
 I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)
@@ -1404,7 +1404,7 @@ I (..\BSP\Delay\delay.h)(0x67D99F72)
 I (..\BSP\bsp.h)(0x67D2CA0F)
 I (..\BSP\LED\led.h)(0x67D2A664)
 I (..\BSP\Usart2\usart1.h)(0x67DA80DB)
-I (..\BSP\IIC_Software\ioi2c.h)(0x67DBE228)
+I (..\BSP\IIC_Software\ioi2c.h)(0x67DCEAE2)
 I (..\BSP\MPU6050\MPU6050.h)(0x67DC352C)
 I (..\BSP\MPU6050\DMP\dmpKey.h)(0x67DBE34F)
 I (..\BSP\MPU6050\DMP\dmpmap.h)(0x67DBE3EC)

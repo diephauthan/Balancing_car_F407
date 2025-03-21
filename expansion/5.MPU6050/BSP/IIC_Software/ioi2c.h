@@ -52,18 +52,17 @@
 
 //Because the hardware sends the exchange
 #define SDA_IN()  {                                                                                 \
-    GPIOB->MODER &= ~(3 << (8 * 2));              /* Xóa bit cấu hình mode cho chân PB8 */          \
-    GPIOB->MODER |= (1 << (8 * 2));               /* Thiết lập mode là output (01) */               \
-    GPIOB->OTYPER &= ~(1 << 8);                   /* Thiết lập output type là push-pull (0) */      \
-    GPIOB->OSPEEDR &= ~(3 << (8 * 2));            /* Xóa bit tốc độ cho chân PB8 */                 \
-    GPIOB->OSPEEDR |= (3 << (8 * 2));             /* Thiết lập tốc độ là very high speed (11) */    \
+    GPIOB->MODER &= ~(3 << (10 * 2));              /* Xóa bit cấu hình mode cho chân PB11 */        \
+    GPIOB->MODER |= (0 << (10 * 2));               /* Thiết lập mode là input (01) */               \
+    GPIOB->PUPDR &= ~(3 << (10*2));      /* Xóa bit pull-up/pull-down */                            \
+    GPIOB->PUPDR |= (0 << (10*2));                                                                  \
 }
 
 #define SDA_OUT() {											                                        \
-    GPIOB->MODER &= ~(3 << (8*2));      /*Xóa bit mode cho PB8 (2 bit cho mỗi chân)*/	            \
-    GPIOB->MODER |= (0 << (8*2));       /*Thiết lập mode là input (00)*/							\
-    GPIOB->PUPDR &= ~(3 << (8*2));      /*Xóa bit pull-up/pull-down*/								\
-    GPIOB->PUPDR |= (1 << (8*2));       /*Thiết lập pull-up (01)*/									\
+    GPIOB->MODER &= ~(3 << (10*2));      /* Xóa bit mode cho PB11 (2 bit cho mỗi chân) */           \
+    GPIOB->MODER |= (1 << (10*2));       /* Thiết lập mode là output (00) */                        \
+    GPIOB->OTYPER&= ~(1 << 10);      /* Xóa bit pull-up/pull-down */                                \
+    GPIOB->OTYPER|= (1 << 10);      /* Thiết lập pull-up (01) */                                    \
 }
      
 // IO operation function

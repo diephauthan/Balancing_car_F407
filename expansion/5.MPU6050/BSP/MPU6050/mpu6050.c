@@ -296,7 +296,6 @@ void DMP_Init(void)
     u8 temp[1]={0};
     i2cRead(0x68,0x75,1,temp); //0x68
     printf("Reading MPU6050 WHO_AM_I register....");
-    printf("mpu_set_sensor complete1 ......\r\n");
 	if(temp[0]!=0x68)NVIC_SystemReset();
     //printf("WHO_AM_I register value: 0x%02X\r\n", temp[0]);
 	if(!mpu_init())

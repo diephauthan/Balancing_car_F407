@@ -28,7 +28,6 @@ void EXTI3_IRQHandler(void)
 		//EXTI->PR=1<<13;
 		EXTI_ClearITPendingBit(EXTI_Line3);
 		Read_DMP();	// Print the fused data of dmp algorithm
-		
 	}
 	
 }

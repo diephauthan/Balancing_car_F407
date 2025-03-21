@@ -1,71 +1,63 @@
 #include "ioi2c.h"
 
+
 /**************************************************************************
 Function: IIC pin initialization
 Input   : none
 Output  : none
+�������ܣ�IIC���ų�ʼ��
+��ڲ�������
+����  ֵ����
 **************************************************************************/
 void IIC_MPU6050_Init(void)
-{
-    GPIO_InitTypeDef GPIO_InitStructure;
-	I2C_InitTypeDef I2C_InitStructure;
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
-
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_I2C2); 
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_I2C2);
-
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10|GPIO_Pin_11;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-	I2C_DeInit(I2C2);
-    I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;
-    I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
-    I2C_InitStructure.I2C_ClockSpeed = 400000;
-    I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;
-    I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;
-    I2C_InitStructure.I2C_OwnAddress1 = 0x10; // This address can be filled in at will, not as a slave
-
-    I2C_Init(I2C2, &I2C_InitStructure);
-    I2C_Cmd(I2C2, ENABLE);
+{			
+	GPIO_InitTypeDef GPIO_InitStructure;
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE); //ʹ��PB�˿�ʱ�� Enable PB port clock
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10|GPIO_Pin_11;	//�˿����� Port Configuration
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;      //������� Push-pull output
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;     //50M
+	GPIO_Init(GPIOB, &GPIO_InitStructure);					      //�����趨������ʼ��GPIOB  Initialize GPIOB according to the set parameters
 }
 
 /**************************************************************************
 Function: Simulate IIC start signal
 Input   : none
 Output  : 1
+�������ܣ�ģ��IIC��ʼ�ź�
+��ڲ�������
+����  ֵ��1
 **************************************************************************/
 int IIC_Start(void)
 {
-    SDA_OUT();     // sda line output
-    IIC_SDA = 1;
-    if(!READ_SDA) return 0;
-    IIC_SCL = 1;
-    delay_us(1);
-    IIC_SDA = 0; //START:when CLK is high,DATA change form high to low
-    if(READ_SDA) return 0;
-    delay_us(1);
-    IIC_SCL = 0; // Clamp the I2C bus and prepare to send or receive data
-    return 1;
+	SDA_OUT();     //sda����� sda line output
+	IIC_SDA=1;
+	if(!READ_SDA)return 0;	
+	IIC_SCL=1;
+	delay_us(1);
+ 	IIC_SDA=0; //START:when CLK is high,DATA change form high to low 
+	if(READ_SDA)return 0;
+	delay_us(1);
+	IIC_SCL=0;//ǯסI2C���ߣ�׼�����ͻ��������  Clamp the I2C bus and prepare to send or receive data
+	return 1;
 }
 
 /**************************************************************************
 Function: Analog IIC end signal
 Input   : none
 Output  : none
+�������ܣ�ģ��IIC�����ź�
+��ڲ�������
+����  ֵ����
 **************************************************************************/	  
 void IIC_Stop(void)
 {
-	SDA_OUT();// sda line output
+	SDA_OUT();//sda����� sda line output
 	IIC_SCL=0;
 	IIC_SDA=0;//STOP:when CLK is high DATA change form low to high
  	delay_us(1);
 	IIC_SCL=1; 
-	IIC_SDA=1;// Send I2C bus end signal
+	IIC_SDA=1;//����I2C���߽����ź� Send I2C bus end signal
 	delay_us(1);							   	
 }
 
@@ -73,11 +65,14 @@ void IIC_Stop(void)
 Function: IIC wait the response signal
 Input   : none
 Output  : 0��No response received��1��Response received
+�������ܣ�IIC�ȴ�Ӧ���ź�
+��ڲ�������
+����  ֵ��0��û���յ�Ӧ��1���յ�Ӧ��
 **************************************************************************/
 int IIC_Wait_Ack(void)
 {
 	u8 ucErrTime=0;
-	SDA_IN();      //  SDA is set as input
+	SDA_IN();      //SDA����Ϊ����   SDA is set as input
 	IIC_SDA=1;
 	delay_us(1);	   
 	IIC_SCL=1;
@@ -92,7 +87,7 @@ int IIC_Wait_Ack(void)
 		}
 	  delay_us(1);
 	}
-	IIC_SCL=0;//    Clock output 0
+	IIC_SCL=0;//ʱ�����0 	    Clock output 0
 	return 1;  
 } 
 
@@ -100,6 +95,9 @@ int IIC_Wait_Ack(void)
 Function: IIC response
 Input   : none
 Output  : none
+�������ܣ�IICӦ��
+��ڲ�������
+����  ֵ����
 **************************************************************************/
 void IIC_Ack(void)
 {
@@ -116,6 +114,9 @@ void IIC_Ack(void)
 Function: IIC don't reply
 Input   : none
 Output  : none
+�������ܣ�IIC��Ӧ��
+��ڲ�������
+����  ֵ����
 **************************************************************************/    
 void IIC_NAck(void)
 {
@@ -127,7 +128,6 @@ void IIC_NAck(void)
 	delay_us(1);
 	IIC_SCL=0;
 }
-
 /**************************************************************************
 Function: IIC sends a byte
 Input   : txd��Byte data sent
@@ -399,4 +399,5 @@ u8 IICwriteBit(u8 dev, u8 reg, u8 bitNum, u8 data){
     b = (data != 0) ? (b | (1 << bitNum)) : (b & ~(1 << bitNum));
     return IICwriteByte(dev, reg, b);
 }
+
 
