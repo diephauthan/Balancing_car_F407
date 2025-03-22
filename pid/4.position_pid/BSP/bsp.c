@@ -15,6 +15,8 @@ void bsp_init(void)
 	BalanceCar_PWM_Init(6720,0);    // fpwm = 25khz
   Encoder_Init_TIM3();
 	Encoder_Init_TIM4();
+  	
+  TIM7_Init();
 }
 
 // void JTAG_Set(u8 mode)

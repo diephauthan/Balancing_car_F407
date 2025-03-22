@@ -45,7 +45,7 @@ I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\USER\main.h)(0x67DD2894)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
@@ -99,7 +99,7 @@ I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\USER\main.h)(0x67DD2894)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
@@ -950,7 +950,7 @@ I (..\FWLib\inc\stm32f4xx_can.h)(0x61F25A2E)
 I (..\FWLib\inc\stm32f4xx_dac.h)(0x61F25A30)
 I (..\FWLib\inc\stm32f4xx_dcmi.h)(0x61F25A31)
 I (..\FWLib\inc\stm32f4xx_fsmc.h)(0x61F25A36)
-F (..\BSP\bsp.c)(0x67DD33E9)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\bsp.o --omf_browse ..\obj\bsp.crf --depend ..\obj\bsp.d)
+F (..\BSP\bsp.c)(0x67DD8360)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\bsp.o --omf_browse ..\obj\bsp.crf --depend ..\obj\bsp.d)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\USER\main.h)(0x67DD2894)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
@@ -995,7 +995,7 @@ I (..\FWLib\inc\stm32f4xx_fsmc.h)(0x61F25A36)
 I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
@@ -1047,15 +1047,15 @@ I (..\FWLib\inc\stm32f4xx_fsmc.h)(0x61F25A36)
 I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
 I (..\BSP\Encoder\encoder.h)(0x67DD2BEB)
 I (..\BSP\Key\key.h)(0x67DD2C87)
 I (..\BSP\PID\pid.h)(0x67DCF83A)
-F (..\BSP\TIMER\timer.c)(0x67DD332B)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\timer.o --omf_browse ..\obj\timer.crf --depend ..\obj\timer.d)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+F (..\BSP\TIMER\timer.c)(0x67DD83A6)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\timer.o --omf_browse ..\obj\timer.crf --depend ..\obj\timer.d)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\USER\main.h)(0x67DD2894)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB3988)
@@ -1152,7 +1152,7 @@ I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
 I (..\BSP\Encoder\encoder.h)(0x67DD2BEB)
@@ -1204,13 +1204,13 @@ I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
 I (..\BSP\Encoder\encoder.h)(0x67DD2BEB)
 I (..\BSP\Key\key.h)(0x67DD2C87)
 I (..\BSP\PID\pid.h)(0x67DCF83A)
-F (..\BSP\Motor\app_motor.c)(0x67DD325E)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\app_motor.o --omf_browse ..\obj\app_motor.crf --depend ..\obj\app_motor.d)
+F (..\BSP\Motor\app_motor.c)(0x67DD84AB)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\app_motor.o --omf_browse ..\obj\app_motor.crf --depend ..\obj\app_motor.d)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
 I (..\USER\main.h)(0x67DD2894)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
@@ -1256,13 +1256,13 @@ I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Encoder\encoder.h)(0x67DD2BEB)
 I (..\BSP\Key\key.h)(0x67DD2C87)
 I (..\BSP\PID\pid.h)(0x67DCF83A)
-F (..\BSP\Encoder\encoder.c)(0x67DD2C2F)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\encoder.o --omf_browse ..\obj\encoder.crf --depend ..\obj\encoder.d)
+F (..\BSP\Encoder\encoder.c)(0x67DD4343)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\encoder.o --omf_browse ..\obj\encoder.crf --depend ..\obj\encoder.d)
 I (..\BSP\Encoder\encoder.h)(0x67DD2BEB)
 I (..\USER\main.h)(0x67DD2894)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
@@ -1308,7 +1308,7 @@ I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
@@ -1360,13 +1360,13 @@ I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)
 I (..\BSP\Encoder\encoder.h)(0x67DD2BEB)
 I (..\BSP\PID\pid.h)(0x67DCF83A)
-F (..\BSP\PID\pid.c)(0x67DD2BD2)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
+F (..\BSP\PID\pid.c)(0x67DD925C)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\TIMER -I..\BSP\Usart2 -I..\BSP\Motor -I..\BSP\Key -I..\BSP\PID -I..\BSP\Encoder-I d:\Embedded\stm32_f407_balacing_car\pid\4.position_pid\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
 I (..\BSP\PID\pid.h)(0x67DCF83A)
 I (..\USER\main.h)(0x67DD2894)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB3986)
@@ -1412,7 +1412,7 @@ I (..\USER\myenum.h)(0x67D70699)
 I (..\BSP\Delay\delay.h)(0x67D67E71)
 I (..\BSP\bsp.h)(0x67D299E0)
 I (..\BSP\LED\led.h)(0x67D2A664)
-I (..\BSP\TIMER\timer.h)(0x67DD2577)
+I (..\BSP\TIMER\timer.h)(0x67DD83B6)
 I (..\BSP\Usart2\usart1.h)(0x67D67EBA)
 I (..\BSP\Motor\motor.h)(0x67D7A5D7)
 I (..\BSP\Motor\app_motor.h)(0x67DD32BB)

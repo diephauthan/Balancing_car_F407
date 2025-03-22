@@ -1,10 +1,5 @@
 #include "timer.h"
 
-u16 led_flag = 0; // 1: Entering flashing state, 0: Waiting for flashing
-u16 led_twinkle_count = 0; // Flashing Count 
-u16 led_count = 0; // Start counting 
-volatile uint32_t _millis = 0;
-
 /**************************************************************************
 Function function: TIM7 initialization, timed for 10 milliseconds
 Entrance parameters: None
@@ -35,11 +30,4 @@ void TIM7_Init(void)
 	
 	TIM_Cmd(TIM7, ENABLE);
 }
-
-
-uint32_t millis(void)
-{
-    return _millis;
-}
-
 

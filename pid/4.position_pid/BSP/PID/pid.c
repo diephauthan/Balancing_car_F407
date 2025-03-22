@@ -15,20 +15,21 @@ void TIM7_IRQHandler(void)
 {
     if(TIM_GetITStatus(TIM7, TIM_IT_Update) != RESET)    // Check whether TIM update interruption occurs
     {
-      TIM_ClearITPendingBit(TIM7, TIM_IT_Update);        // Clear TIMx update interrupt flag
+        TIM_ClearITPendingBit(TIM7, TIM_IT_Update);        // Clear TIMx update interrupt flag
 
-      Position_Left = Read_Position(MOTOR_ID_ML);
-      Position_Right = Read_Position(MOTOR_ID_MR);
+        Position_Left = Read_Position(MOTOR_ID_ML);
+        Position_Right = Read_Position(MOTOR_ID_MR);
 
-      motor_L = Position_PID(Position_Left, Left_target);
-      motor_R = Position_PID(Position_Right, Right_target);
+        motor_L = Position_PID(Position_Left, Left_target);
+        motor_R = Position_PID(Position_Right, Right_target);
 
-      motor_L = PWM_Ignore(motor_L);
-      motor_R = PWM_Ignore(motor_R);
+        motor_L = PWM_Ignore(motor_L);
+        motor_R = PWM_Ignore(motor_R);
 
-      motor_L = PWM_Limit(motor_L, 2500, -2500);
-      motor_R = PWM_Limit(motor_R, 2500, -2500);
-       
+        motor_L = PWM_Limit(motor_L, 2500, -2500);
+        motor_R = PWM_Limit(motor_R, 2500, -2500);
+
+        Set_Pwm(motor_L,motor_R);
     }
 }
 

@@ -45,7 +45,7 @@ void uart_init(uint32_t bound)
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	
-		GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);  // TX
+	GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);  // TX
     GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_USART3);  // RX
     
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;

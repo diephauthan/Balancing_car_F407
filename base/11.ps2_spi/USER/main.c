@@ -14,12 +14,12 @@ void TimingDelay_Decrement(void)
 
 int main(void)
 {	
-			bsp_init(); // System initialization
+	bsp_init(); // System initialization
 	
-		while(1)
-		{	
-
-		}
+	while(1)
+    {	
+        PS2_Data_Show();
+	}
 		
 }
 

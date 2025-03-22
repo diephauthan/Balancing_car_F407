@@ -5,9 +5,13 @@ void bsp_init(void)
 	
 	DIY_NVIC_PriorityGroupConfig(2);	  // Set interrupt grouping
   SystemClockConfig();
+  delay_init();
 	Init_Led_GPIO();								// Onboard LED
-	TIM7_Init();
-	uart_init(9600);
+	
+  uart_init(115200);
+  
+  PS2_Init();//�ֱ���ʼ�� Controller initialization
+	PS2_SetInit();
 }
 
 // void JTAG_Set(u8 mode)
