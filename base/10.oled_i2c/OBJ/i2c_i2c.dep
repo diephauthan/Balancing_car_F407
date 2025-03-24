@@ -1038,7 +1038,7 @@ I (..\BSP\bsp.h)(0x67D7E80B)
 I (..\BSP\Oled\oled.h)(0x67D99C49)
 I (..\BSP\Oled\oled_i2c.h)(0x67D84624)
 I (..\BSP\Oled\oled_fonts.h)(0x67D84814)
-F (..\BSP\Oled\oled.c)(0x67D99C21)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Oled-I d:\Embedded\stm32_f407_balacing_car\base\10.oled_i2c\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\oled.o --omf_browse ..\obj\oled.crf --depend ..\obj\oled.d)
+F (..\BSP\Oled\oled.c)(0x67D99C77)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I..\BSP -I..\CMSIS -I..\FWLib\inc -I..\USER -I..\BSP\Delay -I..\BSP\LED -I..\BSP\Oled-I d:\Embedded\stm32_f407_balacing_car\base\10.oled_i2c\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F407xx -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DHSE_VALUE="8000000" -DUSE_STM32F4_DISCOVERY-o ..\obj\oled.o --omf_browse ..\obj\oled.crf --depend ..\obj\oled.d)
 I (..\BSP\Oled\oled.h)(0x67D99C49)
 I (..\BSP\Oled\oled_i2c.h)(0x67D84624)
 I (..\USER\main.h)(0x67D971CB)
