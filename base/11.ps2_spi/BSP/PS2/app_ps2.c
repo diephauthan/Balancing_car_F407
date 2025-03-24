@@ -2,7 +2,7 @@
 
 
 int g_PS2_LX, g_PS2_LY, g_PS2_RX, g_PS2_RY, g_PS2_KEY;
-int g_flag = 1; // Mode print interlock flag
+int g_flag = 1; //  Mode print interlock flag
 
 
 // Key value test function
@@ -32,7 +32,7 @@ void PS2_Data_Show(void)
 			printf("PS2 mode is RED^GREEN mode \r\n");
 			g_flag = 1;
 		}
-		// Only the red green mode has the correct joystick value
+		// Only the red green mode has the correct joystick value 
 		if (g_PS2_LX > 130 || g_PS2_LX < 100)
 			printf("PS2_LX = %d \r\n", g_PS2_LX);
 		if (g_PS2_LY > 130 || g_PS2_LY < 100)
@@ -42,10 +42,6 @@ void PS2_Data_Show(void)
 		if (g_PS2_RY > 130 || g_PS2_RY < 100)
 			printf("PS2_RY = %d \r\n", g_PS2_RY);
 	}
-
-	// for (int i = 0; i < 9; i++) {
-    // printf("Data[%d] = %02X\r\n", i, Data[i]);
-	// }
 
 	switch (g_PS2_KEY)
 	{
@@ -99,7 +95,6 @@ void PS2_Data_Show(void)
 		break;
 	}
 
-
-	delay_ms(100); // Delay 100ms
+	delay_ms(100); // ��ʱ100m���� Delay 100ms
 }
 

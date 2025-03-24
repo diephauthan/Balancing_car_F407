@@ -9,9 +9,9 @@ void bsp_init(void)
 	Init_Led_GPIO();								// Onboard LED
 	
   uart_init(115200);
-  
   PS2_Init();//�ֱ���ʼ�� Controller initialization
 	PS2_SetInit();
+  
 }
 
 // void JTAG_Set(u8 mode)

@@ -29,7 +29,6 @@
 "..\obj\delay.o"
 "..\obj\bsp.o"
 "..\obj\led.o"
-"..\obj\timer.o"
 "..\obj\usart1.o"
 "..\obj\app_ps2.o"
 "..\obj\ps2.o"

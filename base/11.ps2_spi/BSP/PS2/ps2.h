@@ -3,39 +3,38 @@
 
 #include "main.h"
 
+/* GPIO definitions for STM32F407 */
+#define PS_PORT_DI     GPIOB
+#define PS_PORT_DO     GPIOB
+#define PS_PORT_CS     GPIOB
+#define PS_PORT_CLK    GPIOB
 
-#define PS_RCC_DI 	RCC_AHB1Periph_GPIOB
-#define PS_RCC_DO 	RCC_AHB1Periph_GPIOB
-#define PS_RCC_CS 	RCC_AHB1Periph_GPIOB
-#define PS_RCC_CLK 	RCC_AHB1Periph_GPIOB
+#define PS_PIN_DI      GPIO_Pin_14
+#define PS_PIN_DO      GPIO_Pin_15
+#define PS_PIN_CS      GPIO_Pin_12
+#define PS_PIN_CLK     GPIO_Pin_13
 
+/* 
+ * Macro for F4 GPIO bit access
+ * Thay thế macro PBin, PBout trong F1
+ */
+#define GPIO_READ_PIN(GPIOx, GPIO_Pin)  GPIO_ReadInputDataBit(GPIOx, GPIO_Pin)
+#define GPIO_SET_PIN(GPIOx, GPIO_Pin)   GPIO_SetBits(GPIOx, GPIO_Pin)
+#define GPIO_RESET_PIN(GPIOx, GPIO_Pin) GPIO_ResetBits(GPIOx, GPIO_Pin)
 
-#define PS_PIN_DI 	GPIO_Pin_14
-#define PS_PIN_DO 	GPIO_Pin_15
-#define PS_PIN_CS 	GPIO_Pin_12
-#define PS_PIN_CLK 	GPIO_Pin_13
+/* Redefine macros for DI, DO, CS, CLK for F407 */
+#define DI            GPIO_READ_PIN(PS_PORT_DI, PS_PIN_DI)
 
-#define PS_PORT_DI 		GPIOB
-#define PS_PORT_DO 		GPIOB
-#define PS_PORT_CS 		GPIOB
-#define PS_PORT_CLK 	GPIOB
+#define DO_H          GPIO_SET_PIN(PS_PORT_DO, PS_PIN_DO)
+#define DO_L          GPIO_RESET_PIN(PS_PORT_DO, PS_PIN_DO)
 
-/*********************************************************
-**********************************************************/	 
-#define DI   PBin(14) //          
- 
-#define DO_H PBout(15)=1       //����λ��  Command bit high
-#define DO_L PBout(15)=0       //����λ��  Command bit low
+#define CS_H          GPIO_SET_PIN(PS_PORT_CS, PS_PIN_CS)
+#define CS_L          GPIO_RESET_PIN(PS_PORT_CS, PS_PIN_CS)
 
-#define CS_H PBout(12)=1       //CS����  CS pull high
-#define CS_L PBout(12)=0       //CS����  CS pull low
+#define CLK_H         GPIO_SET_PIN(PS_PORT_CLK, PS_PIN_CLK)
+#define CLK_L         GPIO_RESET_PIN(PS_PORT_CLK, PS_PIN_CLK)
 
-#define CLK_H PBout(13)=1      //ʱ������  Clock pull high
-#define CLK_L PBout(13)=0      //ʱ������  Clock pull low
- 
-    
- 
-//These are our button constants
+// Button constants remain the same
 #define PSB_SELECT      1
 #define PSB_L3          2
 #define PSB_R3          3
@@ -52,39 +51,33 @@
 #define PSB_RED         14
 #define PSB_BLUE        15
 #define PSB_PINK        16
- 
-#define PSB_TRIANGLE    13
-#define PSB_CIRCLE      14
-#define PSB_CROSS       15
-#define PSB_SQUARE      16
- 
-//#define WHAMMY_BAR		8
- 
+
+
 //These are stick values
 #define PSS_RX 5                //��ҡ��X������  Right joystick X-axis data
 #define PSS_RY 6
 #define PSS_LX 7
 #define PSS_LY 8
- 
+
+// Rest of the header remains the same
+// ...
+
 extern u8 Data[9];
 extern u16 MASK[16];
 extern u16 Handkey;
- 
+
 void PS2_Init(void);
-u8 PS2_RedLight(void);   //�ж��Ƿ�Ϊ���ģʽ  Determine whether it is red light mode
-void PS2_ReadData(void); //���ֱ�����  Read handle data
-void PS2_Cmd(u8 CMD);		  //���ֱ���������   Sending commands to the controller
-u8 PS2_DataKey(void);		  //����ֵ��ȡ  Read the key value
-u8 PS2_AnologData(u8 button); //�õ�һ��ҡ�˵�ģ����  Get the analog value of a joystick
-void PS2_ClearData(void);	  //������ݻ�����  Clear the data buffer
-void PS2_Vibration(u8 motor1, u8 motor2);//������motor1  0xFF���������أ�motor2  0x40~0xFF  Vibration setting motor1 0xFF on, others off, motor2 0x40~0xFF
-void PS2_ShortPoll(void);
+u8 PS2_RedLight(void);
+void PS2_ReadData(void);
+void PS2_Cmd(u8 CMD);
+u8 PS2_DataKey(void);
+u8 PS2_AnologData(u8 button);
+void PS2_ClearData(void);
+void PS2_Vibration(u8 motor1, u8 motor2);
+void PS2_EnterConfing(void);
+void PS2_TurnOnAnalogMode(void);
+void PS2_VibrationMode(void);
+void PS2_ExitConfing(void);
+void PS2_SetInit(void);
 
-void PS2_EnterConfing(void);	 //��������  Enter configuration
-void PS2_TurnOnAnalogMode(void); //����ģ���� Send analog value
-void PS2_VibrationMode(void);    //������  Vibration setting
-void PS2_ExitConfing(void);	     //�������  Complete configuration
-void PS2_SetInit(void);		     //���ó�ʼ�� Configuration initialization
- 
 #endif
-

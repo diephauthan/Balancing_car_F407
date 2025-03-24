@@ -47,8 +47,6 @@
 ..\obj\app_ps2.o: ..\USER\main.h
 ..\obj\app_ps2.o: ..\BSP\LED\led.h
 ..\obj\app_ps2.o: ..\USER\main.h
-..\obj\app_ps2.o: ..\BSP\TIMER\timer.h
-..\obj\app_ps2.o: ..\USER\main.h
 ..\obj\app_ps2.o: ..\BSP\Usart2\usart1.h
 ..\obj\app_ps2.o: ..\USER\main.h
 ..\obj\app_ps2.o: ..\BSP\PS2\ps2.h

@@ -583,11 +583,6 @@
               <FilePath>..\BSP\LED\led.c</FilePath>
             </File>
             <File>
-              <FileName>timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BSP\TIMER\timer.c</FilePath>
-            </File>
-            <File>
               <FileName>usart1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\Usart2\usart1.c</FilePath>

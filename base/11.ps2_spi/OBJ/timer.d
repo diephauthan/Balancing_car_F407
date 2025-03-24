@@ -47,7 +47,6 @@
 ..\obj\timer.o: ..\USER\main.h
 ..\obj\timer.o: ..\BSP\LED\led.h
 ..\obj\timer.o: ..\USER\main.h
-..\obj\timer.o: ..\BSP\TIMER\timer.h
 ..\obj\timer.o: ..\BSP\Usart2\usart1.h
 ..\obj\timer.o: ..\USER\main.h
 ..\obj\timer.o: ..\BSP\PS2\ps2.h
