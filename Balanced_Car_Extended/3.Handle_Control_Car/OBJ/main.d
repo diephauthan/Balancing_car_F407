@@ -66,5 +66,7 @@
 ..\obj\main.o: ..\BSP\Motor\app_motor.h
 ..\obj\main.o: ..\BSP\PS2\ps2.h
 ..\obj\main.o: ..\BSP\PS2\app_ps2.h
+..\obj\main.o: ..\APP\app_control.h
+..\obj\main.o: ..\APP\PID\pid_control.h
 ..\obj\main.o: ..\APP\filter\filter.h
 ..\obj\main.o: ..\APP\KF\KF.h

@@ -66,5 +66,7 @@
 ..\obj\inv_mpu_dmp_motion_driver.o: ..\BSP\Motor\app_motor.h
 ..\obj\inv_mpu_dmp_motion_driver.o: ..\BSP\PS2\ps2.h
 ..\obj\inv_mpu_dmp_motion_driver.o: ..\BSP\PS2\app_ps2.h
+..\obj\inv_mpu_dmp_motion_driver.o: ..\APP\app_control.h
+..\obj\inv_mpu_dmp_motion_driver.o: ..\APP\PID\pid_control.h
 ..\obj\inv_mpu_dmp_motion_driver.o: ..\APP\filter\filter.h
 ..\obj\inv_mpu_dmp_motion_driver.o: ..\APP\KF\KF.h

@@ -49,6 +49,10 @@
 #include "ps2.h"
 #include "app_ps2.h"
 
+//Balance car overall control
+#include "app_control.h"
+#include "pid_control.h"
+
 //filtering alforithm
 #include "filter.h"
 #include "KF.h"

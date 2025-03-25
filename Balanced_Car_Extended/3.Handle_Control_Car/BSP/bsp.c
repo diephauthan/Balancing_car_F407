@@ -57,39 +57,51 @@ void bsp_init(void)
     DIY_NVIC_PriorityGroupConfig(2);    // Configure interrupt priority grouping
     SystemClockConfig();
     delay_init();
+    uart_init(115200);	            // Serial port 1 initialization
 	
     //led/beep
 	Init_Led_GPIO();				//Onboard LED
+    printf("0.1\r\n");
 	Init_Beep();			        //Onboard buzzer
+    printf("0.2\r\n");
 	Key1_GPIO_Init();			    //Onboard buttons
+    printf("0.3\r\n");
 	
 	
 	BalanceCar_Motor_Init();        // Motor GPIO initialization
+    printf("0.4\r\n");
 	BalanceCar_PWM_Init(6720,0); 	// Initialize PWM 25Khz and motor hardware interface for driving the motor
-	Encoder_Init_TIM3();            // Initialize encoder 3
-	Encoder_Init_TIM4();            // Initialize encoder 4
-	
-	uart_init(115200);	            // Serial port 1 initialization
-	
+	printf("0.5\r\n");
+    Encoder_Init_TIM3();            // Initialize encoder 3
+	printf("0.6\r\n");
+    Encoder_Init_TIM4();            // Initialize encoder 4
+	printf("0.7\r\n");
+
 	delay_ms(300);
 	
 	IIC_MPU6050_Init();			    // Gyroscope I2C initialization
+    printf("0.9\r\n");
 	MPU6050_initialize();			// Gyroscope range initialization
+    printf("1\r\n");
 	DMP_Init();                     // DMP initialization
+    printf("1.1\r\n");
 	
 	OLED_I2C_Init();				// OLED initialization
+    printf("1.2\r\n");
 	 
 
 	PS2_Init();//�ֱ���ʼ��  Controller initialization
+    printf("1.3\r\n");
 	PS2_SetInit();
+    printf("1.4\r\n");
 	
-	Battery_init();									//��ص�������ʼ�� Initialization of battery level detection
-	
+	Battery_init();									// Initialization of battery level detection
+	printf("1.5\r\n");
 
-	//��ʱ������ timer service 
-	TIM7_Init();									//LED��˸����ѹ��������  LED flashing, voltage detection service function
+	//timer service 
+	TIM7_Init();									// LED flashing, voltage detection service function
 	
-	
+	printf("1.6\r\n");
 
 }
 

@@ -46,7 +46,7 @@ int main(void)
 	while(1)
 	{
 		
-		//PS2_Contorl_Car();
+		PS2_Contorl_Car();
 		
 		
 		sprintf(showbuf,"speed = %d  ",speed_flag);

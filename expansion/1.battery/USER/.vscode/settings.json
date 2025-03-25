@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "beep.h": "c",
+        "main.h": "c",
+        "delay.h": "c"
+    }
+}

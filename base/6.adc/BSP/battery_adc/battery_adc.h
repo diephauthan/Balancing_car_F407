@@ -9,7 +9,7 @@
 
 
 #define BAT_ADC         ADC1
-#define BAT_ADC_CH      ADC_Channel_5
+#define BAT_ADC_CH      ADC_Channel_4
 #define BAT_ADC_RCC     RCC_APB2Periph_ADC1
 
 void 	Battery_init(void);

@@ -47,8 +47,6 @@
 ..\obj\stm32f4xx_it.o: ..\USER\main.h
 ..\obj\stm32f4xx_it.o: ..\BSP\LED\led.h
 ..\obj\stm32f4xx_it.o: ..\USER\main.h
-..\obj\stm32f4xx_it.o: ..\BSP\TIMER\timer.h
-..\obj\stm32f4xx_it.o: ..\USER\main.h
 ..\obj\stm32f4xx_it.o: ..\BSP\Usart2\usart1.h
 ..\obj\stm32f4xx_it.o: ..\USER\main.h
 ..\obj\stm32f4xx_it.o: ..\BSP\Motor\motor.h

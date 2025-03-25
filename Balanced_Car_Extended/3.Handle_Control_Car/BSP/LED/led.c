@@ -14,4 +14,5 @@ void Init_Led_GPIO(void)
 	GPIO_Init(LED_PORT, &GPIO_InitStructure);
 	
 	LED = 0;
+	//printf("0.1\r\n");
 }

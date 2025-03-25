@@ -67,5 +67,7 @@
 ..\obj\stm32f4xx_it.o: ..\BSP\Motor\app_motor.h
 ..\obj\stm32f4xx_it.o: ..\BSP\PS2\ps2.h
 ..\obj\stm32f4xx_it.o: ..\BSP\PS2\app_ps2.h
+..\obj\stm32f4xx_it.o: ..\APP\app_control.h
+..\obj\stm32f4xx_it.o: ..\APP\PID\pid_control.h
 ..\obj\stm32f4xx_it.o: ..\APP\filter\filter.h
 ..\obj\stm32f4xx_it.o: ..\APP\KF\KF.h

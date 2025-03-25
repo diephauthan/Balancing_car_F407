@@ -67,5 +67,7 @@
 ..\obj\timer.o: ..\BSP\Motor\app_motor.h
 ..\obj\timer.o: ..\BSP\PS2\ps2.h
 ..\obj\timer.o: ..\BSP\PS2\app_ps2.h
+..\obj\timer.o: ..\APP\app_control.h
+..\obj\timer.o: ..\APP\PID\pid_control.h
 ..\obj\timer.o: ..\APP\filter\filter.h
 ..\obj\timer.o: ..\APP\KF\KF.h

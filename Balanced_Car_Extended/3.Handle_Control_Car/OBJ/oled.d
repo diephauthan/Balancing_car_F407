@@ -67,6 +67,8 @@
 ..\obj\oled.o: ..\BSP\Motor\app_motor.h
 ..\obj\oled.o: ..\BSP\PS2\ps2.h
 ..\obj\oled.o: ..\BSP\PS2\app_ps2.h
+..\obj\oled.o: ..\APP\app_control.h
+..\obj\oled.o: ..\APP\PID\pid_control.h
 ..\obj\oled.o: ..\APP\filter\filter.h
 ..\obj\oled.o: ..\APP\KF\KF.h
 ..\obj\oled.o: ..\BSP\Oled\oled_fonts.h

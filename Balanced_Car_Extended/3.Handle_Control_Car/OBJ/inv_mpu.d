@@ -66,5 +66,7 @@
 ..\obj\inv_mpu.o: ..\BSP\Motor\app_motor.h
 ..\obj\inv_mpu.o: ..\BSP\PS2\ps2.h
 ..\obj\inv_mpu.o: ..\BSP\PS2\app_ps2.h
+..\obj\inv_mpu.o: ..\APP\app_control.h
+..\obj\inv_mpu.o: ..\APP\PID\pid_control.h
 ..\obj\inv_mpu.o: ..\APP\filter\filter.h
 ..\obj\inv_mpu.o: ..\APP\KF\KF.h

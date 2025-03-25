@@ -10,7 +10,6 @@ void Init_Beep(void)
 		GPIO_InitStructure.GPIO_Pin = BEEP_PIN;
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 		GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	
 		GPIO_Init(BEEP_PORT, &GPIO_InitStructure);

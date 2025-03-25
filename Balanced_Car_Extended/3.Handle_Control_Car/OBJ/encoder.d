@@ -67,5 +67,7 @@
 ..\obj\encoder.o: ..\BSP\Motor\app_motor.h
 ..\obj\encoder.o: ..\BSP\PS2\ps2.h
 ..\obj\encoder.o: ..\BSP\PS2\app_ps2.h
+..\obj\encoder.o: ..\APP\app_control.h
+..\obj\encoder.o: ..\APP\PID\pid_control.h
 ..\obj\encoder.o: ..\APP\filter\filter.h
 ..\obj\encoder.o: ..\APP\KF\KF.h

@@ -1,35 +1,28 @@
 #include "pid_control.h"
 
-//ÏÂÃæµÄpidÎªÁËºÃµ÷,¶¼·Åµ½100±¶ÁË The following pids are all scaled to 100 times for easy adjustment.
-//Ö±Á¢»·PD¿ØÖÆ²ÎÊý
+//The following pids are all scaled to 100 times for easy adjustment.
 //Vertical loop PD control parameters
-float Balance_Kp =9600;//·¶Î§0-288  Range 0-288
-float Balance_Kd =48; //·¶Î§0-2 Range 0-2
+float Balance_Kp =9600;//ï¿½ï¿½Î§0-288  Range 0-288
+float Balance_Kd =48; //ï¿½ï¿½Î§0-2 Range 0-2
 
-//ËÙ¶È»·PI¿ØÖÆ²ÎÊý
 //PI control parameters for speed loop
-float Velocity_Kp=6200; //·¶Î§0-72 Range 0-72
+float Velocity_Kp=6200; // Range 0-72
 float Velocity_Ki=31;  //kp/200
 
-//×ªÏò»·PD¿ØÖÆ²ÎÊý
 //Steering ring PD control parameters
-float Turn_Kp=1700; //Õâ¸ö¸ù¾Ý×Ô¼ºµÄÐèÇóµ÷£¬Ö»ÊÇÆ½ºâ¿ÉÒÔ²»µ÷ This is adjusted according to your needs, but the balance can be left unchanged
-float Turn_Kd=20; //·¶Î§ 0-2 Range 0-2
+float Turn_Kp=1700; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ This is adjusted according to your needs, but the balance can be left unchanged
+float Turn_Kd=20; //ï¿½ï¿½Î§ 0-2 Range 0-2
 
-//Ç°½øËÙ¶È
 //Forward speed
 float Car_Target_Velocity=30; //0-50
-//Ðý×ªËÙ¶È
+
 //Rotation speed
 float Car_Turn_Amplitude_speed=48; //0-70
 
 /**************************************************************************
 Function: Absolute value function 
-Input   : a£ºNumber to be converted
+Input   : aï¿½ï¿½Number to be converted
 Output  : unsigned int
-º¯Êý¹¦ÄÜ£º¾ø¶ÔÖµº¯Êý
-Èë¿Ú²ÎÊý£ºa£ºÐèÒª¼ÆËã¾ø¶ÔÖµµÄÊý
-·µ»Ø  Öµ£ºÎÞ·ûºÅÕûÐÍ
 **************************************************************************/	
 int myabs(int a)
 { 		   
@@ -42,55 +35,48 @@ int myabs(int a)
 
 /**************************************************************************
 Function: Vertical PD control
-Input   : Angle:angle£»Gyro£ºangular velocity
-Output  : balance£ºVertical control PWM
-º¯Êý¹¦ÄÜ£ºÖ±Á¢PD¿ØÖÆ		
-Èë¿Ú²ÎÊý£ºAngle:½Ç¶È£»Gyro£º½ÇËÙ¶È
-·µ»Ø  Öµ£ºbalance£ºÖ±Á¢¿ØÖÆPWM
+Input   : Angle:angleï¿½ï¿½Gyroï¿½ï¿½angular velocity
+Output  : balanceï¿½ï¿½Vertical control PWM
 **************************************************************************/	
 int Balance_PD(float Angle,float Gyro)
 {  
-   float Angle_bias,Gyro_bias;
-	 int balance;
-	 Angle_bias=Mid_Angle-Angle;                       				//Çó³öÆ½ºâµÄ½Ç¶ÈÖÐÖµ ºÍ»úÐµÏà¹Ø Find the median angle and mechanical correlation for equilibrium
-	 Gyro_bias=0-Gyro; 
-	 balance=-Balance_Kp/100*Angle_bias-Gyro_bias*Balance_Kd/100; //¼ÆËãÆ½ºâ¿ØÖÆµÄµç»úPWM  PD¿ØÖÆ   kpÊÇPÏµÊý kdÊÇDÏµÊý  Calculate the motor PWM PD control for balance control kp is the P coefficient kd is the D coefficient
-	
-	 return balance;
+   	float Angle_bias,Gyro_bias;
+	int balance;
+	Angle_bias=Mid_Angle-Angle;                       				//ï¿½ï¿½ï¿½Æ½ï¿½ï¿½Ä½Ç¶ï¿½ï¿½ï¿½Öµ ï¿½Í»ï¿½Ðµï¿½ï¿½ï¿½ Find the median angle and mechanical correlation for equilibrium
+	Gyro_bias=0-Gyro; 
+	balance=-Balance_Kp/100*Angle_bias-Gyro_bias*Balance_Kd/100; //ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ÆµÄµï¿½ï¿½PWM  PDï¿½ï¿½ï¿½ï¿½   kpï¿½ï¿½PÏµï¿½ï¿½ kdï¿½ï¿½DÏµï¿½ï¿½  Calculate the motor PWM PD control for balance control kp is the P coefficient kd is the D coefficient
+
+	return balance;
 }
 
 
 /**************************************************************************
 Function: Speed PI control
-Input   : encoder_left£ºLeft wheel encoder reading£»encoder_right£ºRight wheel encoder reading
+Input   : encoder_leftï¿½ï¿½Left wheel encoder readingï¿½ï¿½encoder_rightï¿½ï¿½Right wheel encoder reading
 Output  : Speed control PWM
-º¯Êý¹¦ÄÜ£ºËÙ¶È¿ØÖÆPWM		
-Èë¿Ú²ÎÊý£ºencoder_left£º×óÂÖ±àÂëÆ÷¶ÁÊý£»encoder_right£ºÓÒÂÖ±àÂëÆ÷¶ÁÊý
-·µ»Ø  Öµ£ºËÙ¶È¿ØÖÆPWM
 **************************************************************************/
-//ÐÞ¸ÄÇ°½øºóÍËËÙ¶È£¬ÇëÐÞ¸ÄTarget_Velocity£¬±ÈÈç£¬¸Ä³É60
 // To change the forward and backward speed, please modify Target_Velocity, for example, change it to 60
 int Velocity_PI(int encoder_left,int encoder_right)
 {  
     static float velocity,Encoder_Least,Encoder_bias,Movement;
-	  static float Encoder_Integral;
+	static float Encoder_Integral;
 
-		if(g_newcarstate==enRUN || g_newcarstate==enps2Fleft || g_newcarstate==enps2Fright)    	Movement=Car_Target_Velocity;	  //Ò£¿ØÇ°½øÐÅºÅ Remote control forward signal
-		else if(g_newcarstate==enBACK || g_newcarstate==enps2Bleft || g_newcarstate==enps2Bright)	Movement=-Car_Target_Velocity;  //Ò£¿ØºóÍËÐÅºÅ Remote control reverse signal
-		else		Movement=Move_X;							         
+	if(g_newcarstate==enRUN || g_newcarstate==enps2Fleft || g_newcarstate==enps2Fright)    	Movement=Car_Target_Velocity;	  //Ò£ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Åºï¿½ Remote control forward signal
+	else if(g_newcarstate==enBACK || g_newcarstate==enps2Bleft || g_newcarstate==enps2Bright)	Movement=-Car_Target_Velocity;  //Ò£ï¿½Øºï¿½ï¿½ï¿½ï¿½Åºï¿½ Remote control reverse signal
+	else		Movement=Move_X;							         
 	
 		
-   //================ËÙ¶ÈPI¿ØÖÆÆ÷ Speed PI controller=====================//	
-		Encoder_Least =0-(encoder_left+encoder_right);                    //»ñÈ¡×îÐÂËÙ¶ÈÆ«²î=Ä¿±êËÙ¶È£¨´Ë´¦ÎªÁã£©-²âÁ¿ËÙ¶È£¨×óÓÒ±àÂëÆ÷Ö®ºÍ£© //Obtain the latest speed deviation=target speed (here zero) - measured speed (sum of left and right encoders) 
-		Encoder_bias *= 0.84;		                                          //Ò»½×µÍÍ¨ÂË²¨Æ÷      //First order low-pass filter  
-		Encoder_bias += Encoder_Least*0.16;	                              //Ò»½×µÍÍ¨ÂË²¨Æ÷£¬¼õ»ºËÙ¶È±ä»¯ //First order low-pass filter to slow down speed changes
-		Encoder_Integral +=Encoder_bias;                                  //»ý·Ö³öÎ»ÒÆ »ý·ÖÊ±¼ä£º5ms //Integral offset time: 5ms
-		Encoder_Integral=Encoder_Integral+Movement;                       //½ÓÊÕÒ£¿ØÆ÷Êý¾Ý£¬¿ØÖÆÇ°½øºóÍË //Receive remote control data and control forward and backward movement
-		if(Encoder_Integral>8000)  	Encoder_Integral=8000;             //»ý·ÖÏÞ·ù //Integral limit
-		if(Encoder_Integral<-8000)	  Encoder_Integral=-8000;            //»ý·ÖÏÞ·ù	 //Integral limit
-		velocity=-Encoder_bias*Velocity_Kp/100-Encoder_Integral*Velocity_Ki/100;     //ËÙ¶È¿ØÖÆ	//Speed control
+   //================ï¿½Ù¶ï¿½PIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Speed PI controller=====================//	
+		Encoder_Least =0-(encoder_left+encoder_right);                    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½Æ«ï¿½ï¿½=Ä¿ï¿½ï¿½ï¿½Ù¶È£ï¿½ï¿½Ë´ï¿½Îªï¿½ã£©-ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È£ï¿½ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½Í£ï¿½ //Obtain the latest speed deviation=target speed (here zero) - measured speed (sum of left and right encoders) 
+		Encoder_bias *= 0.84f;		                                          //Ò»ï¿½×µï¿½Í¨ï¿½Ë²ï¿½ï¿½ï¿½      //First order low-pass filter  
+		Encoder_bias += Encoder_Least*0.16f;	                              //Ò»ï¿½×µï¿½Í¨ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È±ä»¯ //First order low-pass filter to slow down speed changes
+		Encoder_Integral +=Encoder_bias;                                  //ï¿½ï¿½ï¿½Ö³ï¿½Î»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º5ms //Integral offset time: 5ms
+		Encoder_Integral=Encoder_Integral+Movement;                       //ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ //Receive remote control data and control forward and backward movement
+		if(Encoder_Integral>8000)  	Encoder_Integral=8000;             //ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ //Integral limit
+		if(Encoder_Integral<-8000)	  Encoder_Integral=-8000;            //ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½	 //Integral limit
+		velocity=-Encoder_bias*Velocity_Kp/100-Encoder_Integral*Velocity_Ki/100;     //ï¿½Ù¶È¿ï¿½ï¿½ï¿½	//Speed control
 		
-		if(Turn_Off(Angle_Balance,battery)==1) Encoder_Integral=0;//µç»ú¹Ø±ÕºóÇå³ý»ý·Ö   //Clear points after motor shutdown
+		if(Turn_Off(Angle_Balance,battery)==1) Encoder_Integral=0;//ï¿½ï¿½ï¿½ï¿½Ø±Õºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   //Clear points after motor shutdown
 		
 	  return velocity;
 } 
@@ -101,20 +87,17 @@ int Velocity_PI(int encoder_left,int encoder_right)
 Function: Turn control
 Input   : Z-axis angular velocity
 Output  : Turn control PWM
-º¯Êý¹¦ÄÜ£º×ªÏò¿ØÖÆ 
-Èë¿Ú²ÎÊý£ºZÖáÍÓÂÝÒÇ
-·µ»Ø  Öµ£º×ªÏò¿ØÖÆPWM
 **************************************************************************/
 int Turn_PD(float gyro)
 {
 	 static float Turn_Target,turn_PWM; 
-	 float Kp=Turn_Kp,Kd;			//ÐÞ¸Ä×ªÏòËÙ¶È£¬ÇëÐÞ¸ÄTurn_Amplitude¼´¿É To modify the steering speed, please modify Turn_Smplitude
-	//===================Ò£¿Ø×óÓÒÐý×ª²¿·Ö Remote control left and right rotation part=================//
+	 float Kp=Turn_Kp,Kd;			//ï¿½Þ¸ï¿½×ªï¿½ï¿½ï¿½Ù¶È£ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½Turn_Amplitudeï¿½ï¿½ï¿½ï¿½ To modify the steering speed, please modify Turn_Smplitude
+	//===================Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ Remote control left and right rotation part=================//
 
 	if(g_newcarstate==enLEFT || g_newcarstate==enps2Fleft || g_newcarstate==enps2Bleft)	        Turn_Target=-Car_Turn_Amplitude_speed;
 	else if(g_newcarstate==enRIGHT || g_newcarstate==enps2Fright || g_newcarstate==enps2Bright)	  Turn_Target=Car_Turn_Amplitude_speed; 
 	
-	//×óÐýÓÒÐý¹Ì¶¨ËÙ¶ÈÅÜ Left turn, right turn, fixed speed running
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ Left turn, right turn, fixed speed running
 	else if(g_newcarstate == enTLEFT) Turn_Target=-50;
 	else if(g_newcarstate == enTRIGHT) Turn_Target=50;
 	else
@@ -122,7 +105,7 @@ int Turn_PD(float gyro)
 		Turn_Target=0; 
 	}
 	
-	//Èç¹ûÊÇÒ£¿Ø×ßÖ±Ïß If it is remote control walking in a straight line
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ If it is remote control walking in a straight line
 	if(g_newcarstate==enRUN || g_newcarstate==enBACK )
 	{
 		Kd=Turn_Kd; 
@@ -131,10 +114,10 @@ int Turn_PD(float gyro)
 
 	
 
-  //===================×ªÏòPD¿ØÖÆÆ÷ Turn to PD controller=================//
-	 turn_PWM=Turn_Target*Kp/100+gyro*Kd/100+Move_Z; //½áºÏZÖáÍÓÂÝÒÇ½øÐÐPD¿ØÖÆ    Combining Z-axis gyroscope for PD control
+  //===================×ªï¿½ï¿½PDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Turn to PD controller=================//
+	 turn_PWM=Turn_Target*Kp/100+gyro*Kd/100+Move_Z; //ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½PDï¿½ï¿½ï¿½ï¿½    Combining Z-axis gyroscope for PD control
 		
-	 return turn_PWM;								 				 //×ªÏò»·PWMÓÒ×ªÎªÕý£¬×ó×ªÎª¸º  Steering ring PWM: Right turn is positive, left turn is negative
+	 return turn_PWM;								 				 //×ªï¿½ï¿½PWMï¿½ï¿½×ªÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªÎªï¿½ï¿½  Steering ring PWM: Right turn is positive, left turn is negative
 }
 
 

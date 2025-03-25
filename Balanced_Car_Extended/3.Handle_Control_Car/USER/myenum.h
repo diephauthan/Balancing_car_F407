@@ -37,20 +37,28 @@
 //Make sure the value of n is less than 16!
 #define PAout(n)   BIT_ADDR(GPIOA_ODR_Addr,n)  // Output
 #define PAin(n)    BIT_ADDR(GPIOA_IDR_Addr,n)  // Input
+
 #define PBout(n)   BIT_ADDR(GPIOB_ODR_Addr,n)  // Output
 #define PBin(n)    BIT_ADDR(GPIOB_IDR_Addr,n)  // Input
+
 #define PCout(n)   BIT_ADDR(GPIOC_ODR_Addr,n)  // Output
 #define PCin(n)    BIT_ADDR(GPIOC_IDR_Addr,n)  // Input
+
 #define PDout(n)   BIT_ADDR(GPIOD_ODR_Addr,n)  // Output
 #define PDin(n)    BIT_ADDR(GPIOD_IDR_Addr,n)  // Input
+
 #define PEout(n)   BIT_ADDR(GPIOE_ODR_Addr,n)  // Output
 #define PEin(n)    BIT_ADDR(GPIOE_IDR_Addr,n)  // Input
+
 #define PFout(n)   BIT_ADDR(GPIOF_ODR_Addr,n)  // Output
 #define PFin(n)    BIT_ADDR(GPIOF_IDR_Addr,n)  // Input
+
 #define PGout(n)   BIT_ADDR(GPIOG_ODR_Addr,n)  // Output
 #define PGin(n)    BIT_ADDR(GPIOG_IDR_Addr,n)  // Input
+
 #define PHout(n)   BIT_ADDR(GPIOH_ODR_Addr,n)  // Output - New for F4
 #define PHin(n)    BIT_ADDR(GPIOH_IDR_Addr,n)  // Input - New for F4
+
 #define PIout(n)   BIT_ADDR(GPIOI_ODR_Addr,n)  // Output - New for F4
 #define PIin(n)    BIT_ADDR(GPIOI_IDR_Addr,n)  // Input - New for F4
 
@@ -71,15 +79,15 @@ typedef enum enCarState_t{
   enTLEFT,
   enTRIGHT,
 	
-	//ps2g?????? ps2 simulation value takes effect
-	enps2Fleft, //j???? Front left turn
-	enps2Fright,//j???? Front right turn
-	enps2Bleft, //?????? Back left turn
-	enps2Bright,//?????? Back right turn
+	// ps2 simulation value takes effect
+	enps2Fleft, //Front left turn
+	enps2Fright,//Front right turn
+	enps2Bleft, // Back left turn
+	enps2Bright,//Back right turn
 	
 	
-	enAvoid, //?????????  Ultrasonic avoidance
-	enFollow, //??????????  Ultrasonic Follow
+	enAvoid, // Ultrasonic avoidance
+	enFollow, //  Ultrasonic Follow
 	enError
 }enCarState;
 

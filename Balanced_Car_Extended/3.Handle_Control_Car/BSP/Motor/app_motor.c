@@ -12,15 +12,15 @@ int PWM_Ignore(int pulse)
 	return pulse;
 }
 
-int myabs(int a){
-    int temp;
-    if(a < 0)
-    {
-        temp = -a;
-    }else 
-        temp = a;
-    return temp;
-}
+//int myabs(int a){
+//    int temp;
+//    if(a < 0)
+//    {
+//        temp = -a;
+//    }else 
+//        temp = a;
+//    return temp;
+//}
 
 /**************************************************************************
 Function: Assign to PWM register
@@ -90,4 +90,25 @@ void Get_Velocity_Form_Encoder(int encoder_left,int encoder_right)
 	
     Rotation_Speed_R = encoder_right*Control_Frequency/EncoderMultiples/Reduction_Ratio/Encoder_precision;
 	Velocity_Right = Rotation_Speed_R*PI*Diameter_67/10;    //Calculate the encoder speed=rotational speed * circumference/10 and convert it to cm
+}
+
+/**************************************************************************
+Function: If abnormal, turn off the motor
+Input   : angle��Car inclination��voltage��Voltage
+Output  : 1��abnormal��0��normal
+**************************************************************************/	
+uint8_t Turn_Off(float angle, float voltage)
+{
+	u8 temp;
+	if(angle<-40||angle>40 || battery<9.6f || Stop_Flag==1)//��ص�ѹ����10V�رյ��  The battery voltage is lower than 10V and the motor is turned off || battery<9.6V
+	{	                                                 //��Ǵ���40�ȹرյ�� Turn off the motor when the inclination angle is greater than 40 degrees
+		temp=1;                                          
+		L_PWMA = 0;
+		L_PWMB = 0;
+		R_PWMA = 0;
+		R_PWMB = 0;
+	}
+	else
+		temp=0;
+	return temp;			
 }

@@ -4,6 +4,12 @@
         "intsever.h": "c",
         "main.h": "c",
         "key.h": "c",
-        "usart1.h": "c"
+        "usart1.h": "c",
+        "led.h": "c",
+        "encoder.h": "c",
+        "mpu6050.h": "c",
+        "oled_i2c.h": "c",
+        "oled.h": "c",
+        "timer.h": "c"
     }
 }

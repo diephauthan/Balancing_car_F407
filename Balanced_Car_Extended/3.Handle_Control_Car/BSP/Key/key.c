@@ -34,7 +34,7 @@ u8 Key1_Long_Press(uint16_t timeout)
 
 //Read the status of button K1, press to return to 1, release to return to 0
 //Mode: Set mode, 0: Press and hold to return 1; 1: Press once to return 1
-u8 Key1_State(u8 mode)
+u8   Key1_State(u8 mode)
 {
 	static uint16_t key1_state = 0;
 

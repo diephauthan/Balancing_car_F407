@@ -67,5 +67,7 @@
 ..\obj\beep.o: ..\BSP\Motor\app_motor.h
 ..\obj\beep.o: ..\BSP\PS2\ps2.h
 ..\obj\beep.o: ..\BSP\PS2\app_ps2.h
+..\obj\beep.o: ..\APP\app_control.h
+..\obj\beep.o: ..\APP\PID\pid_control.h
 ..\obj\beep.o: ..\APP\filter\filter.h
 ..\obj\beep.o: ..\APP\KF\KF.h

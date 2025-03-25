@@ -136,6 +136,20 @@ void SSD1306_UpdateScreen(void)
     }
 }
 
+void SSD1306_ToggleInvert(void)
+{
+    uint16_t i;
+
+    /* Toggle invert */
+    SSD1306.Inverted = !SSD1306.Inverted;
+
+    /* Do memory toggle */
+    for (i = 0; i < sizeof(SSD1306_Buffer); i++)
+    {
+        SSD1306_Buffer[i] = ~SSD1306_Buffer[i];
+    }
+}
+
 void SSD1306_Fill(SSD1306_COLOR_t color)
 {
     /* Set memory */
@@ -350,6 +364,65 @@ void SSD1306_DrawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, SSD130
     }
 }
 
+void SSD1306_DrawRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, SSD1306_COLOR_t c)
+{
+    /* Check input parameters */
+    if (
+        x >= SSD1306_WIDTH ||
+        y >= SSD1306_HEIGHT)
+    {
+        /* Return error */
+        return;
+    }
+
+    /* Check width and height */
+    if ((x + w) >= SSD1306_WIDTH)
+    {
+        w = SSD1306_WIDTH - x;
+    }
+    if ((y + h) >= SSD1306_HEIGHT)
+    {
+        h = SSD1306_HEIGHT - y;
+    }
+
+    /* Draw 4 lines */
+    SSD1306_DrawLine(x, y, x + w, y, c);         /* Top line */
+    SSD1306_DrawLine(x, y + h, x + w, y + h, c); /* Bottom line */
+    SSD1306_DrawLine(x, y, x, y + h, c);         /* Left line */
+    SSD1306_DrawLine(x + w, y, x + w, y + h, c); /* Right line */
+}
+
+void SSD1306_DrawFilledRectangle(uint16_t x, uint16_t y, uint16_t w, uint16_t h, SSD1306_COLOR_t c)
+{
+    uint8_t i;
+
+    /* Check input parameters */
+    if (
+        x >= SSD1306_WIDTH ||
+        y >= SSD1306_HEIGHT)
+    {
+        /* Return error */
+        return;
+    }
+
+    /* Check width and height */
+    if ((x + w) >= SSD1306_WIDTH)
+    {
+        w = SSD1306_WIDTH - x;
+    }
+    if ((y + h) >= SSD1306_HEIGHT)
+    {
+        h = SSD1306_HEIGHT - y;
+    }
+
+    /* Draw lines */
+    for (i = 0; i <= h; i++)
+    {
+        /* Draw lines */
+        SSD1306_DrawLine(x, y + i, x + w, y + i, c);
+    }
+}
+
 /* OLED清除屏幕
  *
  * OLED clear screen
@@ -396,4 +469,14 @@ void OLED_Draw_Line(char *data, uint8_t line, bool clear, bool refresh)
     {
         OLED_Draw_String(data, 0, 10 * (line - 1), clear, refresh);
     }
+}
+
+void ssd1306_I2C_WriteMulti(uint8_t address, uint8_t reg, uint8_t *data, uint16_t count)
+{
+    OLED_i2cWrite(address, reg, count, data);
+}
+
+void ssd1306_I2C_Write(uint8_t address, uint8_t reg, uint8_t data)
+{
+    OLED_i2cWrite(address, reg, 1, &data);
 }

@@ -13,7 +13,7 @@ void Battery_init(void)
 	// 168M/6=28, ADC maximum input clock cannot exceed 14M
 	// PA5 is used as analog channel input pin
 	GPIO_InitStructure.GPIO_Pin = BAT_GPIO_PIN;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN; //ain
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN; //Analog input
 	
 	GPIO_Init(BAT_GPIO_PORT, &GPIO_InitStructure);
 	
@@ -29,6 +29,7 @@ void Battery_init(void)
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConvEdge_None;
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
 	ADC_InitStructure.ADC_NbrOfConversion = 1;
+	ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;
 	
 	ADC_Init(BAT_ADC, &ADC_InitStructure);					
 	ADC_Cmd(BAT_ADC, ENABLE);			
@@ -72,23 +73,47 @@ uint16_t Battery_Get_Average(uint8_t ch, uint8_t times)
 
 
 //Obtain the measured original voltage value
+// float Get_Measure_Voltage(void)
+// {
+// 	uint16_t adcx;
+// 	float temp;
+// 	adcx = Battery_Get(BAT_ADC_CH);
+// 	temp = (float)adcx * (3.30f /4095.0f);
+// 	return temp;
+// }
+
 float Get_Measure_Voltage(void)
 {
-	uint16_t adcx;
-	float temp;
-	adcx = Battery_Get(BAT_ADC_CH);
-	temp = (float)adcx * (3.30f /4095.0f);
-	return temp;
+    uint16_t adcx;
+    float temp;
+    
+    // Đọc ADC nhiều lần để kiểm tra độ ổn định
+    adcx = Battery_Get_Average(BAT_ADC_CH, 10);
+    
+    // In giá trị ADC raw
+    printf("ADC Raw: %d\r\n", adcx);
+    
+    // Chuyển đổi giá trị ADC sang điện áp
+    temp = (float)adcx * (3.30f / 4095.0f);
+    
+    // In giá trị điện áp
+    printf("Voltage: %.4f V\r\n", temp);
+    
+    return temp;
 }
 
 //Obtain the actual voltage of the battery before voltage division
+// float Get_Battery_Voltage(void)
+// {
+// 	float temp = Get_Measure_Voltage();
+// 	//The actual measured value is slightly lower than the calculated value.
+// 	temp = temp * 4.03f; //temp*(10+3.3)/3.3; 
+// 	return temp;
+// }
+
+
 float Get_Battery_Voltage(void)
 {
-	float temp = Get_Measure_Voltage();
-	//The actual measured value is slightly lower than the calculated value.
-	temp = temp * 4.03f; //temp*(10+3.3)/3.3; 
-	return temp;
+    float temp = Get_Measure_Voltage();
+    return temp; // Loại bỏ nhân 4.03
 }
-
-
-

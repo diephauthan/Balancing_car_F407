@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Mpu6050</TargetName>
+      <TargetName>handle_control_car</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pArmCC>5060061::V5.06 update 1 (build 61)::ARMCC</pArmCC>
@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F40_41xxx,HSE_VALUE=8000000,USE_STM32F4_DISCOVERY</Define>
               <Undefine></Undefine>
-              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\Usart2;..\BSP\MPU6050;..\BSP\IIC_Software;..\BSP\INT_Sever;..\BSP\MPU6050\DMP;..\BSP\battery_adc;..\BSP\Beep;..\BSP\Encoder;..\BSP\Key;..\BSP\Motor;..\BSP\Oled;..\BSP\PS2;..\BSP\TIMER;..\APP\filter;..\APP\KF</IncludePath>
+              <IncludePath>..\BSP;..\CMSIS;..\FWLib\inc;..\USER;..\BSP\Delay;..\BSP\LED;..\BSP\Usart2;..\BSP\MPU6050;..\BSP\IIC_Software;..\BSP\INT_Sever;..\BSP\MPU6050\DMP;..\BSP\battery_adc;..\BSP\Beep;..\BSP\Encoder;..\BSP\Key;..\BSP\Motor;..\BSP\Oled;..\BSP\PS2;..\BSP\TIMER;..\APP\filter;..\APP\KF;..\APP;..\APP\PID</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -638,11 +638,6 @@
               <FilePath>..\BSP\Motor\motor.c</FilePath>
             </File>
             <File>
-              <FileName>app_motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BSP\Motor\app_motor.c</FilePath>
-            </File>
-            <File>
               <FileName>oled_i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\Oled\oled_i2c.c</FilePath>
@@ -691,9 +686,24 @@
           <GroupName>APP</GroupName>
           <Files>
             <File>
+              <FileName>app_motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\Motor\app_motor.c</FilePath>
+            </File>
+            <File>
               <FileName>app_ps2.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\PS2\app_ps2.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\app_control.c</FilePath>
+            </File>
+            <File>
+              <FileName>pid_control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\PID\pid_control.c</FilePath>
             </File>
           </Files>
         </Group>

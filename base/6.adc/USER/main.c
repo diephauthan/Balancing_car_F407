@@ -19,7 +19,7 @@ int main(void)
 		while(1)
 		{
 				LED = !LED;
-				USART2_Send_Float(Get_Battery_Voltage(), 4);
+				printf("battery volt: %.2f\r\n",Get_Measure_Voltage() );
 				delay_ms(500);
 		}
 }

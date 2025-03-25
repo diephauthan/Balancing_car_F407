@@ -47,8 +47,6 @@
 ..\obj\app_motor.o: ..\USER\main.h
 ..\obj\app_motor.o: ..\BSP\LED\led.h
 ..\obj\app_motor.o: ..\USER\main.h
-..\obj\app_motor.o: ..\BSP\TIMER\timer.h
-..\obj\app_motor.o: ..\USER\main.h
 ..\obj\app_motor.o: ..\BSP\Usart2\usart1.h
 ..\obj\app_motor.o: ..\USER\main.h
 ..\obj\app_motor.o: ..\BSP\Motor\motor.h

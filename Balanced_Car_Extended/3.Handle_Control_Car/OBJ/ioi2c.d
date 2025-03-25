@@ -67,5 +67,7 @@
 ..\obj\ioi2c.o: ..\BSP\Motor\app_motor.h
 ..\obj\ioi2c.o: ..\BSP\PS2\ps2.h
 ..\obj\ioi2c.o: ..\BSP\PS2\app_ps2.h
+..\obj\ioi2c.o: ..\APP\app_control.h
+..\obj\ioi2c.o: ..\APP\PID\pid_control.h
 ..\obj\ioi2c.o: ..\APP\filter\filter.h
 ..\obj\ioi2c.o: ..\APP\KF\KF.h

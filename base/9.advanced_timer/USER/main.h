@@ -31,7 +31,6 @@
 #include "delay.h"
 #include "bsp.h"
 #include "led.h"
-#include "timer.h"
 #include "usart1.h"
 #include "motor.h"
 #include "app_motor.h"

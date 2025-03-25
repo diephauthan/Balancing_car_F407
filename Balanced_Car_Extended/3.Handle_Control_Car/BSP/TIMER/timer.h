@@ -4,8 +4,9 @@
 #include "main.h"
 
 void TIM7_Init(void);
-uint32_t millis(void);
+void cotrol_led(void);
 void TIM7_IRQHandler(void);
+void power_decect(void);
 
 
 #endif
